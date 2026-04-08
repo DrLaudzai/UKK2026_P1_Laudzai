@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'role',
+    ];
+
+    protected $attributes = [
+        'credit_score' => 100,
+        'is_restricted' => 0,
     ];
 
     /**
@@ -44,5 +49,50 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function detail()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+
+    public function loans()
+    {
+        return $this->hasMany(\App\Models\Loan::class);
+    }
+
+    public function violations()
+    {
+        return $this->hasMany(\App\Models\Violation::class);
+    }
+
+    public function appeals()
+    {
+        return $this->hasMany(\App\Models\Appeal::class);
+    }
+
+    public function activityLogs()
+    {
+        return $this->hasMany(\App\Models\ActivityLog::class);
+    }
+
+    public function approvedLoans()
+    {
+        return $this->hasMany(\App\Models\Loan::class, 'employee_id');
+    }
+
+    public function recordedReturns()
+    {
+        return $this->hasMany(\App\Models\Return::class, 'employee_id');
+    }
+
+    public function settlements()
+    {
+        return $this->hasMany(\App\Models\Settlement::class, 'employee_id');
+    }
+
+    public function reviewedAppeals()
+    {
+        return $this->hasMany(\App\Models\Appeal::class, 'reviewed_by');
     }
 }

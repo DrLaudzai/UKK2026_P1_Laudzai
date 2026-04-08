@@ -54,6 +54,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+
+    
     <!-- END: Custom CSS-->
 
 </head>
@@ -99,7 +101,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         class="feather icon-check-square"></i> Task</a><a class="dropdown-item"
                                     href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
-                                    href="login-with-bg-image.html"><i class="feather icon-power"></i> Logout</a>
+                                    href="{{ route('login') }}"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -114,42 +116,48 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" navigation-header"><span>General</span><i class=" feather icon-minus"
-                        data-toggle="tooltip" data-placement="right" data-original-title="General"></i>
-                </li>
-                <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title"
-                            data-i18n="Dashboard">Dashboard</span><span
-                            class="badge badge badge-primary badge-pill float-right mr-2"></span></a>
-                    <ul class="menu-content">
-                        <li class="active"><a class="menu-item" href="{{route ('dashboard')}}" data-i18n="CRM">CRM</a>
-                        </li>
-                    </ul>
-                </li>
+                <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+    <a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a>
+</li>
+
+<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+    <a href="{{ route('users.index') }}">
+        <i class="feather icon-users"></i>
+        <span class="menu-title">Users</span>
+    </a>
+</li>
             </ul>
         </div>
     </div>
     <!-- END: Main Menu-->
 
-{{-- ✅ Konten halaman --}}
-                {{-- ✅ Alert global sukses & error --}}
-                @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-                    <i class="ph ph-check-circle me-2"></i>
+<div class="app-content content">
+    <div class="content-wrapper">
+
+        <!-- spacing biar ga ketiban navbar -->
+        <div class="content-header row"></div>
+
+        <div class="content-body">
+            
+            {{-- Alert --}}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show mb-2">
                     {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-                @endif
+            @endif
 
-                @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-                    <i class="ph ph-x-circle me-2"></i>
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show mb-2">
                     {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-                @endif
+            @endif
 
-                {{-- ✅ Konten halaman --}}
-                @yield('content')
+            {{-- ISI HALAMAN --}}
+            @yield('content')
+
+        </div>
+    </div>
+</div>
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>

@@ -103,18 +103,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                             Account Details</span>
                                     </p>
                                     <div class="card-body">
-                                        <form class="form-horizontal"
-                                            action="https://demos.pixinvent.com/stack-html-admin-template/html/ltr/vertical-modern-menu-template/index.html"
-                                            novalidate>
+                                        <form method="POST" action="/login">
+                                            @csrf
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control" id="user-name"
+                                                <input type="email" name="email" class="form-control" placeholder="Email" required
                                                     placeholder="Your Username" required>
                                                 <div class="form-control-position">
                                                     <i class="feather icon-user"></i>
                                                 </div>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control" id="user-password"
+                                                <input type="password" name="password" class="form-control" placeholder="Password" required
                                                     placeholder="Enter Password" required>
                                                 <div class="form-control-position">
                                                     <i class="fa fa-key"></i>
@@ -134,17 +133,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <button type="submit" class="btn btn-outline-primary btn-block"><i
                                                     class="feather icon-unlock"></i> Login</button>
                                         </form>
+                                        @if(session('error'))
+                                            <div class="text-danger text-center">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
                                     </div>
                                     <p
                                         class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
                                         <span>New to
                                             Stack ?</span>
                                     </p>
-                                    <div class="card-body">
-                                        <a href="{{ route('register') }}" class="btn btn-outline-danger btn-block">
-                                            <i class="feather icon-user"></i> Register
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
