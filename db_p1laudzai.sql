@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 08, 2026 at 07:44 AM
+-- Generation Time: Apr 09, 2026 at 11:11 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `activity_logs` (
   `id` int NOT NULL,
   `user_id` int DEFAULT NULL COMMENT 'FK ke users yang melakukan aksi. NULL jika aksi otomatis sistem',
-  `action` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode aksi: loan.created  ,   loan.approved  ,   return.recorded  ,   violation.created  ,   settlement.created  ,   appeal.approved  ,   dst',
-  `module` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Modul terkait: loans  ,   returns  ,   violations  ,   settlements  ,   appeals  ,   tools  ,   users',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan aksi dalam bahasa natural',
-  `meta` text COLLATE utf8mb4_unicode_ci COMMENT 'Data konteks tambahan dalam format JSON string. Contoh: ARRAY[\\\\\\\\\\"loan_id\\\\\\\\',
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'IP address pelaku aksi',
+  `action` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode aksi: loan.created  ,   loan.approved  ,   return.recorded  ,   violation.created  ,   settlement.created  ,   appeal.approved  ,   dst',
+  `module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Modul terkait: loans  ,   returns  ,   violations  ,   settlements  ,   appeals  ,   tools  ,   users',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan aksi dalam bahasa natural',
+  `meta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Data konteks tambahan dalam format JSON string. Contoh: ARRAY[\\\\\\\\\\"loan_id\\\\\\\\',
+  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'IP address pelaku aksi',
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -48,10 +48,10 @@ CREATE TABLE `appeals` (
   `id` int NOT NULL,
   `user_id` int NOT NULL COMMENT 'FK ke users   (  User  )   yang mengajukan banding',
   `reviewed_by` int DEFAULT NULL COMMENT 'FK ke users   (  Admin  )   yang mereview banding',
-  `reason` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Alasan atau refleksi dari user  ,   biasanya diajukan saat penalty_points tinggi sehingga tidak ada alat yang bisa dipinjam',
-  `status` enum('pending','approved','rejected') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Alasan atau refleksi dari user  ,   biasanya diajukan saat penalty_points tinggi sehingga tidak ada alat yang bisa dipinjam',
+  `status` enum('pending','approved','rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `credit_changed` int DEFAULT NULL COMMENT 'Jumlah poin yang dikurangi dari penalty_points jika approved. Default 1  ,   Admin bisa ubah',
-  `admin_notes` text COLLATE utf8mb4_unicode_ci COMMENT 'Catatan atau feedback Admin ke user',
+  `admin_notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Catatan atau feedback Admin ke user',
   `created_at` timestamp NOT NULL,
   `reviewed_at` timestamp NULL DEFAULT NULL COMMENT 'Waktu Admin memutuskan. NULL jika masih pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -95,9 +95,16 @@ CREATE TABLE `bundle_tools` (
 
 CREATE TABLE `categories` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nama kategori alat',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Deskripsi kategori'
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nama kategori alat',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Deskripsi kategori'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`) VALUES
+(4, 'Laudzai', 'sdsd');
 
 -- --------------------------------------------------------
 
@@ -109,13 +116,13 @@ CREATE TABLE `loans` (
   `id` int NOT NULL,
   `user_id` int NOT NULL COMMENT 'FK ke users  ,   peminjam yang mengajukan',
   `tool_id` int NOT NULL COMMENT 'FK ke tools  ,   template alat yang dipinjam',
-  `unit_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke tool_units  ,   unit fisik spesifik yang dipilih user   (  berlaku untuk single maupun bundle)',
+  `unit_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke tool_units  ,   unit fisik spesifik yang dipilih user   (  berlaku untuk single maupun bundle)',
   `employee_id` int DEFAULT NULL COMMENT 'FK ke users   (  Employee  )    ,   diisi saat approve atau reject',
-  `status` enum('pending','active','rejected','closed') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('pending','active','rejected','closed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `loan_date` date NOT NULL COMMENT 'Tanggal mulai peminjaman',
   `due_date` date NOT NULL COMMENT 'Tanggal wajib kembali',
-  `purpose` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Tujuan/keperluan peminjaman dari user',
-  `notes` text COLLATE utf8mb4_unicode_ci COMMENT 'Catatan Employee saat approve atau reject',
+  `purpose` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Tujuan/keperluan peminjaman dari user',
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Catatan Employee saat approve atau reject',
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -128,7 +135,7 @@ CREATE TABLE `loans` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -162,10 +169,10 @@ CREATE TABLE `returns` (
   `id` int NOT NULL,
   `loan_id` int NOT NULL COMMENT 'FK ke loans  ,   1 loan hanya bisa punya 1 return',
   `employee_id` int NOT NULL COMMENT 'FK ke users   (  Employee  )   yang mencatat pengembalian',
-  `condition_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke unit_conditions  ,   kondisi alat saat dikembalikan',
+  `condition_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke unit_conditions  ,   kondisi alat saat dikembalikan',
   `return_date` date NOT NULL COMMENT 'Tanggal aktual alat dikembalikan',
-  `proof` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notes` text COLLATE utf8mb4_unicode_ci COMMENT 'Catatan pengembalian dari Employee',
+  `proof` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Catatan pengembalian dari Employee',
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -179,7 +186,7 @@ CREATE TABLE `settlements` (
   `id` int NOT NULL,
   `violation_id` int NOT NULL COMMENT 'FK ke violations  ,   1 pelanggaran hanya bisa dilunasi 1 kali',
   `employee_id` int NOT NULL COMMENT 'FK ke users   (  Employee  )   yang mencatat pelunasan',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan pelunasan: bayar denda / ganti alat / kesepakatan lain',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan pelunasan: bayar denda / ganti alat / kesepakatan lain',
   `settled_at` timestamp NOT NULL COMMENT 'Waktu pelunasan dicatat. Setelah ini violations.status = settled dan users.is_restricted = 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -192,15 +199,23 @@ CREATE TABLE `settlements` (
 CREATE TABLE `tools` (
   `id` int NOT NULL,
   `category_id` int NOT NULL COMMENT 'FK ke categories',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nama template/jenis alat',
-  `item_type` enum('single','bundle','bundle_tool') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nama template/jenis alat',
+  `item_type` enum('single','bundle','bundle_tool') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` bigint DEFAULT NULL COMMENT 'Batas maks poin penalti user agar boleh meminjam alat ini. Contoh: nilai 3 = hanya user dengan penalty_points <= 3 yang bisa pinjam. NULL = semua user boleh pinjam',
-  `min_credit_scorebigint` int NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Deskripsi umum alat atau bundle',
-  `code_slug` bigint DEFAULT NULL,
-  `photo_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Path foto representatif alat',
-  `created_at` timestamp NOT NULL
+  `min_credit_score` bigint DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Deskripsi umum alat atau bundle',
+  `code_slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photo_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Path foto representatif alat',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tools`
+--
+
+INSERT INTO `tools` (`id`, `category_id`, `name`, `item_type`, `price`, `min_credit_score`, `description`, `code_slug`, `photo_path`, `created_at`, `updated_at`) VALUES
+(1, 4, 'Yono', 'bundle', 500, 32, 'wews', 'yono', 'tools/atgUJikf9RBhY6lY6YoGWswmjhL4aBCezJfXTSeD.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -209,10 +224,10 @@ CREATE TABLE `tools` (
 --
 
 CREATE TABLE `tool_units` (
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode unik unit fisik  ,   dibuat BE. Single: LPT-001 | Bundle: SET-PK-001',
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode unik unit fisik  ,   dibuat BE. Single: LPT-001 | Bundle: SET-PK-001',
   `tool_id` int NOT NULL COMMENT 'FK ke tools   (  template)',
-  `status` enum('available','nonactive','lent') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Catatan tambahan unit',
+  `status` enum('available','nonactive','lent') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Catatan tambahan unit',
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -223,11 +238,11 @@ CREATE TABLE `tool_units` (
 --
 
 CREATE TABLE `unit_conditions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode unik riwayat kondisi  ,   dibuat BE',
-  `unit_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke tool_units',
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Kode unik riwayat kondisi  ,   dibuat BE',
+  `unit_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke tool_units',
   `return_id` int DEFAULT NULL COMMENT 'FK ke returns  ,   NULL jika dicatat di luar konteks pengembalian   (  entry awal  ,   maintenance  ,   inspeksi)',
-  `conditions` enum('good','broken','maintenance') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan kondisi saat dicatat',
+  `conditions` enum('good','broken','maintenance') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan kondisi saat dicatat',
   `recorded_at` timestamp NOT NULL COMMENT 'Waktu kondisi dicatat. Kondisi terkini = recorded_at paling baru'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -239,9 +254,9 @@ CREATE TABLE `unit_conditions` (
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Email untuk login  ,   harus unik',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password ter-hash   (  bcrypt)',
-  `role` enum('Admin','Petugas','Peminjam') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Role untuk menentukan akses  ,   admin bisa manage user dan alat, petugas bisa manage peminjaman dan pengembalian, peminjam hanya bisa pinjam alat',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Email untuk login  ,   harus unik',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password ter-hash   (  bcrypt)',
+  `role` enum('Admin','Petugas','Peminjam') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Role untuk menentukan akses  ,   admin bisa manage user dan alat, petugas bisa manage peminjaman dan pengembalian, peminjam hanya bisa pinjam alat',
   `credit_score` int NOT NULL COMMENT 'Akumulasi poin pelanggaran  ,   bertambah tiap melanggar. Makin tinggi makin terbatas alat yang bisa dipinjam',
   `is_restricted` tinyint NOT NULL COMMENT '1 = sedang ada pinjaman aktif atau belum settlement  ,   tidak bisa ajukan pinjaman baru',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -262,11 +277,11 @@ INSERT INTO `users` (`id`, `email`, `password`, `role`, `credit_score`, `is_rest
 --
 
 CREATE TABLE `user_details` (
-  `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nomor Induk Kependudukan  ,   unik per orang',
+  `nik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nomor Induk Kependudukan  ,   unik per orang',
   `user_id` int DEFAULT NULL COMMENT 'FK ke users',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nama lengkap',
-  `no_hp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nomor handphone',
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Alamat lengkap',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nama lengkap',
+  `no_hp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nomor handphone',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Alamat lengkap',
   `birth_date` date DEFAULT NULL COMMENT 'Tanggal lahir',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -290,11 +305,11 @@ CREATE TABLE `violations` (
   `loan_id` int NOT NULL COMMENT 'FK ke loans yang menghasilkan pelanggaran',
   `user_id` int NOT NULL COMMENT 'FK ke users yang dikenakan pelanggaran',
   `return_id` int DEFAULT NULL COMMENT 'FK ke returns. NULL jika type = lost karena tidak ada pengembalian',
-  `type` enum('late','damaged','lost') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('late','damaged','lost') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `total_score` int NOT NULL COMMENT 'total kredit user yang berkurang',
   `fine` double DEFAULT NULL COMMENT 'Jumlah hari keterlambatan  ,   diisi hanya jika type = late',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan detail pelanggaran',
-  `status` enum('active','settled') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan detail pelanggaran',
+  `status` enum('active','settled') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -445,7 +460,7 @@ ALTER TABLE `bundle_tools`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `loans`
@@ -475,7 +490,7 @@ ALTER TABLE `settlements`
 -- AUTO_INCREMENT for table `tools`
 --
 ALTER TABLE `tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

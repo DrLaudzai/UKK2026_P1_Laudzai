@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ToolController;
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -33,3 +35,7 @@ Route::post('/login', function (Request $request) {
 }); 
 
 Route::resource('users', UserController::class);    
+
+Route::resource('categories', CategoryController::class);
+
+Route::resource('tools', ToolController::class);

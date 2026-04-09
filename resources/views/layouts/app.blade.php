@@ -55,7 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
 
-    
+
     <!-- END: Custom CSS-->
 
 </head>
@@ -92,7 +92,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 data-toggle="dropdown">
                                 <div class="avatar avatar-online"><img
                                         src="../../../app-assets/images/portrait/small/avatar-s-1.png"
-                                        alt="avatar"><i></i></div><span class="user-name">John Doe</span>
+                                        alt="avatar"><i></i></div><span class="user-name">
+                                    {{ auth()->user()->name }} ({{ ucfirst(auth()->user()->role) }})
+                                </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
                                     href="user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a
@@ -117,47 +119,61 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
-    <a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a>
-</li>
+                    <a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a>
+                </li>
 
-<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
-    <a href="{{ route('users.index') }}">
-        <i class="feather icon-users"></i>
-        <span class="menu-title">Users</span>
-    </a>
-</li>
+                <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}">
+                        <i class="feather icon-users"></i>
+                        <span class="menu-title">Users</span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                    <a href="{{ route('categories.index') }}">
+                        <i class="feather icon-categories"></i>
+                        <span class="menu-title">Category</span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ request()->routeIs('tools.*') ? 'active' : '' }}">
+                    <a href="{{ route('tools.index') }}">
+                        <i class="feather icon-tools"></i>
+                        <span class="menu-title">Tool</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
     <!-- END: Main Menu-->
 
-<div class="app-content content">
-    <div class="content-wrapper">
+    <div class="app-content content">
+        <div class="content-wrapper">
 
-        <!-- spacing biar ga ketiban navbar -->
-        <div class="content-header row"></div>
+            <!-- spacing biar ga ketiban navbar -->
+            <div class="content-header row"></div>
 
-        <div class="content-body">
-            
-            {{-- Alert --}}
-            @if (session('success'))
+            <div class="content-body">
+
+                {{-- Alert --}}
+                @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show mb-2">
                     {{ session('success') }}
                 </div>
-            @endif
+                @endif
 
-            @if (session('error'))
+                @if (session('error'))
                 <div class="alert alert-danger alert-dismissible fade show mb-2">
                     {{ session('error') }}
                 </div>
-            @endif
+                @endif
 
-            {{-- ISI HALAMAN --}}
-            @yield('content')
+                {{-- ISI HALAMAN --}}
+                @yield('content')
 
+            </div>
         </div>
     </div>
-</div>
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
