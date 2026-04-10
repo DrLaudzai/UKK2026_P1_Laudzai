@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {

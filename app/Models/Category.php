@@ -12,4 +12,9 @@ class Category extends Model
     ];
 
     public $timestamps = false;
+
+    public function tools()
+{
+    return $this->hasMany(Tool::class, 'category_id');
+}
 }

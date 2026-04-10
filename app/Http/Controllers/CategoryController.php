@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('id','desc')->get();
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -22,16 +21,11 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        // VALIDASI (tidak boleh duplikat)
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'name' => 'required',
         ]);
 
-        // OPTIONAL: rapihin format
-        $data = $request->all();
-        $data['name'] = ucfirst(strtolower($data['name']));
-
-        Category::create($data);
+        Category::create($request->all());
 
         return redirect()->route('categories.index')
             ->with('success', 'Kategori berhasil ditambahkan');
@@ -46,21 +40,13 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        // VALIDASI (tidak boleh sama dengan yang lain, tapi boleh sama dengan dirinya sendiri)
         $request->validate([
-            'name' => [
-                'required',
-                Rule::unique('categories', 'name')->ignore($id),
-            ],
+            'name' => 'required',
         ]);
 
         $category = Category::findOrFail($id);
 
-        // OPTIONAL: rapihin format
-        $data = $request->all();
-        $data['name'] = ucfirst(strtolower($data['name']));
-
-        $category->update($data);
+        $category->update($request->all());
 
         return redirect()->route('categories.index')
             ->with('success', 'Kategori berhasil diupdate');
@@ -69,6 +55,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+
+        // cek apakah masih dipakai di tools
+        if ($category->tools()->exists()) {
+            return back()->with('error', 'Kategori tidak bisa dihapus karena masih digunakan oleh tools!');
+        }
 
         $category->delete();
 

@@ -23,9 +23,9 @@ class Tool extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
     public function units()
     {
-        return $this->hasMany(ToolUnit::class);
+        return $this->hasMany(ToolUnit::class, 'tool_id');
     }
+
 }

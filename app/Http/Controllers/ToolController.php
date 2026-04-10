@@ -99,6 +99,11 @@ class ToolController extends Controller
     public function destroy($id)
     {
         $tool = Tool::findOrFail($id);
+
+        if ($tool->units()->exists()) {
+            return back()->with('error', 'Tool tidak bisa dihapus karena masih memiliki unit!');
+        }
+
         $tool->delete();
 
         return back()->with('success', 'Tools berhasil dihapus');

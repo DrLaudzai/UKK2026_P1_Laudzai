@@ -94,12 +94,15 @@ class ToolUnitController extends Controller
             ->with('success', 'Unit berhasil diupdate');
     }
 
-    public function destroy(ToolUnit $tool_unit)
+    public function destroy($id)
     {
-        $tool_unit->delete();
+        try {
+            $data = Model::findOrFail($id);
+            $data->delete();
 
-        return redirect()->route('tool-units.index')
-            ->with('success', 'Unit berhasil dihapus');
+            return back()->with('success', 'Data berhasil dihapus');
+        } catch (QueryException $e) {
+            return back()->with('error', 'Data tidak bisa dihapus karena masih digunakan!');
+        }
     }
-
 }

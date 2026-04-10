@@ -200,6 +200,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="../../../app-assets/js/scripts/cards/card-statistics.min.js"></script>
     <!-- END: Page JS-->
 
+    <script>
+        @if (session('error'))
+            alert({{ json_encode(session('error')) }});
+        @endif
+    </script>
+
 </body>
 <!-- END: Body-->
 
