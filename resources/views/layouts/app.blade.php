@@ -142,6 +142,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="menu-title">Tool</span>
                     </a>
                 </li>
+
+                <li class="nav-item {{ request()->routeIs('tool-units.*') ? 'active' : '' }}">
+                    <a href="{{ route('tool-units.index') }}">
+                        <i class="feather icon-tools"></i>
+                        <span class="menu-title">Unit Tools</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

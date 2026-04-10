@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tool extends Model
 {
-        protected $fillable = [
+    protected $fillable = [
         'category_id',
         'name',
         'item_type',
@@ -22,5 +22,10 @@ class Tool extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function units()
+    {
+        return $this->hasMany(ToolUnit::class);
     }
 }

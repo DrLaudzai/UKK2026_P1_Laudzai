@@ -11,7 +11,7 @@ class ToolController extends Controller
 {
     public function index()
     {
-        $tools = Tool::orderBy('id','desc')->get();
+        $tools = Tool::orderBy('id', 'desc')->get();
         return view('admin.tools.index', compact('tools'));
     }
 
@@ -34,22 +34,26 @@ class ToolController extends Controller
 
         $data = $request->all();
 
-        // slug otomatis jika kosong
+        // slug (boleh tetap ada)
         if (!$request->code_slug) {
             $data['code_slug'] = Str::slug($request->name);
         }
 
+        // 🔥 INI YANG PENTING (CODE UNTUK UNIT)
+        $data['code'] = strtoupper(str_replace(' ', '-', $request->name));
+
         // upload photo
         if ($request->hasFile('photo_path')) {
             $file = $request->file('photo_path');
-            $path = $file->store('tools','public');
+            $path = $file->store('tools', 'public');
             $data['photo_path'] = $path;
         }
 
         Tool::create($data);
 
         return redirect()->route('tools.index')
-            ->with('success','Tools berhasil ditambahkan');
+            ->with('success', 'Tools berhasil ditambahkan');
+
     }
 
     public function edit($id)
@@ -57,7 +61,7 @@ class ToolController extends Controller
         $tool = Tool::findOrFail($id);
         $categories = Category::all();
 
-        return view('admin.tools.edit', compact('tool','categories'));
+        return view('admin.tools.edit', compact('tool', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -82,14 +86,14 @@ class ToolController extends Controller
         // update photo
         if ($request->hasFile('photo_path')) {
             $file = $request->file('photo_path');
-            $path = $file->store('tools','public');
+            $path = $file->store('tools', 'public');
             $data['photo_path'] = $path;
         }
 
         $tool->update($data);
 
         return redirect()->route('tools.index')
-            ->with('success','Tools berhasil diupdate');
+            ->with('success', 'Tools berhasil diupdate');
     }
 
     public function destroy($id)
@@ -97,6 +101,6 @@ class ToolController extends Controller
         $tool = Tool::findOrFail($id);
         $tool->delete();
 
-        return back()->with('success','Tools berhasil dihapus');
+        return back()->with('success', 'Tools berhasil dihapus');
     }
 }

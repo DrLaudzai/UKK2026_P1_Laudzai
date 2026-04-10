@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\ToolUnitController;
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -39,3 +41,5 @@ Route::resource('users', UserController::class);
 Route::resource('categories', CategoryController::class);
 
 Route::resource('tools', ToolController::class);
+
+Route::resource('tool-units', ToolUnitController::class);

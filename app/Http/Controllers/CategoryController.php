@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -21,11 +22,16 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        // VALIDASI (tidak boleh duplikat)
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
         ]);
 
-        Category::create($request->all());
+        // OPTIONAL: rapihin format
+        $data = $request->all();
+        $data['name'] = ucfirst(strtolower($data['name']));
+
+        Category::create($data);
 
         return redirect()->route('categories.index')
             ->with('success', 'Kategori berhasil ditambahkan');
@@ -40,13 +46,21 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        // VALIDASI (tidak boleh sama dengan yang lain, tapi boleh sama dengan dirinya sendiri)
         $request->validate([
-            'name' => 'required',
+            'name' => [
+                'required',
+                Rule::unique('categories', 'name')->ignore($id),
+            ],
         ]);
 
         $category = Category::findOrFail($id);
 
-        $category->update($request->all());
+        // OPTIONAL: rapihin format
+        $data = $request->all();
+        $data['name'] = ucfirst(strtolower($data['name']));
+
+        $category->update($data);
 
         return redirect()->route('categories.index')
             ->with('success', 'Kategori berhasil diupdate');
