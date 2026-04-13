@@ -92,7 +92,12 @@ class ToolController extends Controller
         // ambil bundle items
         $bundleItems = DB::table('bundle_tools')
             ->join('tools', 'bundle_tools.tool_id', '=', 'tools.id')
-            ->select('bundle_tools.*', 'tools.name')
+            ->select(
+                'bundle_tools.*',
+                'tools.name',
+                'tools.price',
+                'tools.description'
+            )
             ->where('bundle_id', $tool->id)
             ->get();
 
@@ -105,6 +110,10 @@ class ToolController extends Controller
 
         try {
             $tool = Tool::findOrFail($id);
+
+            // 🔥 ambil item_type (karena select disabled)
+            $itemType = $request->item_type ?? $tool->item_type;
+
             $data = $request->all();
 
             $data['code_slug'] = $request->code_slug
@@ -118,30 +127,75 @@ class ToolController extends Controller
 
             $tool->update($data);
 
-            $oldItems = DB::table('bundle_tools')
-                ->where('bundle_id', $tool->id)
-                ->pluck('tool_id');
+            if ($itemType === 'bundle') {
 
-            Tool::whereIn('id', $oldItems)->delete();
-            DB::table('bundle_tools')->where('bundle_id', $tool->id)->delete();
+                $existingIds = [];
 
-            if ($request->item_type === 'bundle' && $request->bundle_name) {
-                foreach ($request->bundle_name as $index => $name) {
-                    $subTool = Tool::create([
-                        'name' => $name,
-                        'category_id' => $tool->category_id,
-                        'item_type' => 'bundle_tool',
-                        'code_slug' => Str::slug($name),
-                        'photo_path' => $tool->photo_path,
-                        'price' => $request->bundle_price[$index] ?? 0,
-                        'description' => $request->bundle_description[$index] ?? null,
-                    ]);
+                if ($request->bundle_name) {
+                    foreach ($request->bundle_name as $index => $name) {
 
-                    DB::table('bundle_tools')->insert([
-                        'bundle_id' => $tool->id,
-                        'tool_id' => $subTool->id,
-                        'qty' => $request->bundle_qty[$index],
-                    ]);
+                        $subId = $request->bundle_id[$index] ?? null;
+
+                        if ($subId) {
+                            // ✅ UPDATE EXISTING
+                            $subTool = Tool::find($subId);
+
+                            if ($subTool) {
+                                $subTool->update([
+                                    'name' => $name,
+                                    'price' => $request->bundle_price[$index] ?? 0,
+                                    'description' => $request->bundle_description[$index] ?? '-',
+                                ]);
+
+                                $existingIds[] = $subTool->id;
+
+                                // update qty
+                                DB::table('bundle_tools')
+                                    ->where('bundle_id', $tool->id)
+                                    ->where('tool_id', $subTool->id)
+                                    ->update([
+                                        'qty' => $request->bundle_qty[$index]
+                                    ]);
+                            }
+
+                        } else {
+                            // ✅ INSERT BARU
+                            $subTool = Tool::create([
+                                'name' => $name,
+                                'category_id' => $tool->category_id,
+                                'item_type' => 'bundle_tool',
+                                'code_slug' => Str::slug($name),
+                                'photo_path' => $tool->photo_path,
+                                'price' => $request->bundle_price[$index] ?? 0,
+                                'description' => $request->bundle_description[$index] ?? '-',
+                            ]);
+
+                            DB::table('bundle_tools')->insert([
+                                'bundle_id' => $tool->id,
+                                'tool_id' => $subTool->id,
+                                'qty' => $request->bundle_qty[$index],
+                            ]);
+
+                            $existingIds[] = $subTool->id;
+                        }
+                    }
+                }
+
+                // ✅ HAPUS YANG DIHAPUS USER
+                $oldIds = DB::table('bundle_tools')
+                    ->where('bundle_id', $tool->id)
+                    ->pluck('tool_id')
+                    ->toArray();
+
+                $deletedIds = array_diff($oldIds, $existingIds);
+
+                if (!empty($deletedIds)) {
+                    DB::table('bundle_tools')
+                        ->where('bundle_id', $tool->id)
+                        ->whereIn('tool_id', $deletedIds)
+                        ->delete();
+
+                    Tool::whereIn('id', $deletedIds)->delete();
                 }
             }
 
@@ -149,6 +203,7 @@ class ToolController extends Controller
 
             return redirect()->route('tools.index')
                 ->with('success', 'Tools berhasil diupdate');
+
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error', $e->getMessage());
