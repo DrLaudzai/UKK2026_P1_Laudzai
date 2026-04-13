@@ -62,7 +62,8 @@ class ToolController extends Controller
                         'item_type' => 'bundle_tool',
                         'code_slug' => Str::slug($name),
                         'photo_path' => $tool->photo_path,
-                        'description' => $tool->description,
+                        'price' => $request->bundle_price[$index] ?? 0,
+                        'description' => $request->bundle_description[$index] ?? null,
                     ]);
 
                     DB::table('bundle_tools')->insert([
@@ -132,7 +133,8 @@ class ToolController extends Controller
                         'item_type' => 'bundle_tool',
                         'code_slug' => Str::slug($name),
                         'photo_path' => $tool->photo_path,
-                        'description' => $tool->description,
+                        'price' => $request->bundle_price[$index] ?? 0,
+                        'description' => $request->bundle_description[$index] ?? null,
                     ]);
 
                     DB::table('bundle_tools')->insert([

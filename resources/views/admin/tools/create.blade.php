@@ -106,11 +106,17 @@
         function addBundleItem() {
             let html = `
     <div class="row mb-2">
-        <div class="col-md-7">
+        <div class="col-md-3">
             <input type="text" name="bundle_name[]" class="form-control" placeholder="Nama Item" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <input type="number" name="bundle_qty[]" class="form-control" placeholder="Qty" required>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="bundle_price[]" class="form-control" placeholder="Price">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="bundle_description[]" class="form-control" placeholder="Deskripsi">
         </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-danger" onclick="removeItem(this)">X</button>
@@ -119,7 +125,7 @@
     `;
             document.getElementById('bundle-items').insertAdjacentHTML('beforeend', html);
         }
-        
+
 
         function removeItem(btn) {
             btn.parentElement.parentElement.remove();
