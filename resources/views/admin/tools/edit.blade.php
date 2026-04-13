@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label>Item Type</label>
-                                <select name="item_type" class="form-control">
+                                <select name="item_type" class="form-control" disabled>
 
                                     <option value="single"
                                         {{ $tool->item_type == 'single' ? 'selected' : '' }}>
@@ -57,11 +57,6 @@
                                     <option value="bundle"
                                         {{ $tool->item_type == 'bundle' ? 'selected' : '' }}>
                                         Bundle
-                                    </option>
-
-                                    <option value="bundle_tool"
-                                        {{ $tool->item_type == 'bundle_tool' ? 'selected' : '' }}>
-                                        Bundle Tool
                                     </option>
 
                                 </select>

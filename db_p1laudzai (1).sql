@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 10, 2026 at 07:26 AM
+-- Generation Time: Apr 13, 2026 at 06:51 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -37,6 +37,28 @@ CREATE TABLE `activity_logs` (
   `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'IP address pelaku aksi',
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `activity_logs`
+--
+
+INSERT INTO `activity_logs` (`id`, `user_id`, `action`, `module`, `description`, `meta`, `ip_address`, `created_at`) VALUES
+(1, 4, 'category.created', 'category', 'Created category: ssssdff', '\"{\\\"name\\\":\\\"ssssdff\\\",\\\"description\\\":\\\"s\\\",\\\"id\\\":9}\"', '127.0.0.1', '2026-04-12 22:05:44'),
+(2, 4, 'category.DiHapus', 'category', 'DiHapus category: ssss', '\"{\\\"id\\\":8,\\\"name\\\":\\\"ssss\\\",\\\"description\\\":null}\"', '127.0.0.1', '2026-04-12 22:20:53'),
+(3, 4, 'tool.DiHapus', 'tool', 'DiHapus tool: Muhammad Farhan', '\"{\\\"id\\\":14,\\\"category_id\\\":7,\\\"name\\\":\\\"Muhammad Farhan\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":1,\\\"min_credit_score\\\":0,\\\"description\\\":null,\\\"code_slug\\\":\\\"yono\\\",\\\"photo_path\\\":\\\"tools\\\\\\/7Xehg5zJXmujkwxoROoc6IqaGIvnamsxqHtgJzTe.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-12 23:07:09'),
+(4, 4, 'tool.DiHapus', 'tool', 'DiHapus tool: Muhammad Farhan', '\"{\\\"id\\\":15,\\\"category_id\\\":7,\\\"name\\\":\\\"Muhammad Farhan\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":100,\\\"min_credit_score\\\":1,\\\"description\\\":null,\\\"code_slug\\\":\\\"yonos\\\",\\\"photo_path\\\":\\\"tools\\\\\\/UoAtQgkpn75MPB0JIfuqgB5Ji0qvQriTCDC82z4Q.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-12 23:07:13'),
+(5, 4, 'category.DiUpdate', 'category', 'DiUpdate category: Elektronik', '\"{\\\"id\\\":9,\\\"name\\\":\\\"Elektronik\\\",\\\"description\\\":\\\"s\\\"}\"', '127.0.0.1', '2026-04-12 23:07:31'),
+(6, 4, 'category.DiUpdate', 'category', 'DiUpdate category: Telekomunikasi', '\"{\\\"id\\\":7,\\\"name\\\":\\\"Telekomunikasi\\\",\\\"description\\\":null}\"', '127.0.0.1', '2026-04-12 23:08:17'),
+(7, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Hp', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Hp\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"10\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"code_slug\\\":\\\"TLM\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp\\\",\\\"id\\\":17}\"', '127.0.0.1', '2026-04-12 23:09:58'),
+(8, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Handphone', '\"{\\\"name\\\":\\\"Handphone\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"handphone\\\",\\\"photo_path\\\":\\\"tools\\\\\\/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp\\\",\\\"description\\\":null,\\\"id\\\":18}\"', '127.0.0.1', '2026-04-12 23:09:58'),
+(9, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"HANDPHONE-001\\\",\\\"tool_id\\\":18,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:10:13'),
+(10, 4, 'tool.DiHapus', 'tool', 'DiHapus tool: Hp', '\"{\\\"id\\\":17,\\\"category_id\\\":7,\\\"name\\\":\\\"Hp\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":10,\\\"min_credit_score\\\":1,\\\"description\\\":null,\\\"code_slug\\\":\\\"TLM\\\",\\\"photo_path\\\":\\\"tools\\\\\\/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-12 23:11:10'),
+(11, 4, 'toolunit.DiHapus', 'toolunit', 'DiHapus toolunit: ', '\"{\\\"code\\\":\\\"HANDPHONE-001\\\",\\\"tool_id\\\":18,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null,\\\"created_at\\\":\\\"2026-04-13 13:10:13\\\"}\"', '127.0.0.1', '2026-04-12 23:13:02'),
+(12, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Laudzai Muaddab Budi', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Laudzai Muaddab Budi\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"11\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"code_slug\\\":\\\"yo\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png\\\",\\\"id\\\":19}\"', '127.0.0.1', '2026-04-12 23:13:28'),
+(13, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"YO-001\\\",\\\"tool_id\\\":19,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:13:40'),
+(14, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Muhammad Farhan', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Muhammad Farhan\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"111\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"code_slug\\\":\\\"yono\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png\\\",\\\"id\\\":20}\"', '127.0.0.1', '2026-04-12 23:18:22'),
+(15, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Handphone', '\"{\\\"name\\\":\\\"Handphone\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"handphone\\\",\\\"photo_path\\\":\\\"tools\\\\\\/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png\\\",\\\"description\\\":null,\\\"id\\\":21}\"', '127.0.0.1', '2026-04-12 23:18:22'),
+(16, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"YONO-001\\\",\\\"tool_id\\\":20,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:18:40');
 
 -- --------------------------------------------------------
 
@@ -84,8 +106,17 @@ CREATE TABLE `bundle_tools` (
   `id` int NOT NULL,
   `bundle_id` int NOT NULL COMMENT 'FK ke tools dimana item_type = bundle',
   `tool_id` int NOT NULL COMMENT 'FK ke tools dimana item_type = bundle_tool',
-  `qty` int NOT NULL COMMENT 'Jumlah sub-tool ini dalam satu bundle'
+  `qty` int NOT NULL COMMENT 'Jumlah sub-tool ini dalam satu bundle',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bundle_tools`
+--
+
+INSERT INTO `bundle_tools` (`id`, `bundle_id`, `tool_id`, `qty`, `created_at`, `updated_at`) VALUES
+(4, 20, 21, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -104,7 +135,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`) VALUES
-(6, 'Za', 'ii');
+(7, 'Telekomunikasi', NULL),
+(9, 'Elektronik', 's');
 
 -- --------------------------------------------------------
 
@@ -210,6 +242,16 @@ CREATE TABLE `tools` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tools`
+--
+
+INSERT INTO `tools` (`id`, `category_id`, `name`, `item_type`, `price`, `min_credit_score`, `description`, `code_slug`, `photo_path`, `created_at`, `updated_at`) VALUES
+(18, 7, 'Handphone', 'bundle_tool', NULL, NULL, NULL, 'handphone', 'tools/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp', NULL, NULL),
+(19, 7, 'Laudzai Muaddab Budi', 'single', 11, 1, NULL, 'yo', 'tools/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png', NULL, NULL),
+(20, 7, 'Muhammad Farhan', 'bundle', 111, 2, NULL, 'yono', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL),
+(21, 7, 'Handphone', 'bundle_tool', NULL, NULL, NULL, 'handphone', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -223,6 +265,14 @@ CREATE TABLE `tool_units` (
   `notes` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tool_units`
+--
+
+INSERT INTO `tool_units` (`code`, `tool_id`, `status`, `notes`, `created_at`) VALUES
+('YO-001', 19, 'available', NULL, '2026-04-13 06:13:40'),
+('YONO-001', 20, 'available', NULL, '2026-04-13 06:18:40');
 
 -- --------------------------------------------------------
 
@@ -429,7 +479,7 @@ ALTER TABLE `violations`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `appeals`
@@ -447,13 +497,13 @@ ALTER TABLE `app_configs`
 -- AUTO_INCREMENT for table `bundle_tools`
 --
 ALTER TABLE `bundle_tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `loans`
@@ -483,7 +533,7 @@ ALTER TABLE `settlements`
 -- AUTO_INCREMENT for table `tools`
 --
 ALTER TABLE `tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`

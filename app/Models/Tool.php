@@ -23,9 +23,14 @@ class Tool extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     public function units()
     {
         return $this->hasMany(ToolUnit::class, 'tool_id');
     }
 
+    public function bundleComponents()
+    {
+        return $this->hasMany(BundleTool::class, 'bundle_id');
+    }
 }

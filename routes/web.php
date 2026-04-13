@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\ToolUnitController;
+use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/login', function () {
@@ -43,3 +45,7 @@ Route::resource('categories', CategoryController::class);
 Route::resource('tools', ToolController::class);
 
 Route::resource('tool-units', ToolUnitController::class);
+
+Route::get('/logs', [ActivityLogController::class, 'index'])->name('logs.index');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

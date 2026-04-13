@@ -35,8 +35,13 @@
                             <tbody>
                                 @foreach ($tools as $tool)
                                     <tr>
-
                                         <td>
+                                            @if ($tool->item_type === 'bundle')
+                                                <button onclick="toggleBundle({{ $tool->id }}, this)"
+                                                    class="btn btn-sm btn-info mb-1">
+                                                    +
+                                                </button>
+                                            @endif
                                             @if ($tool->photo_path)
                                                 <img src="{{ asset('storage/' . $tool->photo_path) }}" width="50">
                                             @endif
@@ -56,6 +61,10 @@
 
                                                 <div class="dropdown-menu dropdown-menu-right">
 
+                                                    <a class="dropdown-item" href="{{ route('tools.show', $tool->id) }}">
+                                                        <i class="fa fa-eye"></i> View
+                                                    </a>
+
                                                     <a class="dropdown-item" href="{{ route('tools.edit', $tool->id) }}">
                                                         <i class="fa fa-edit"></i> Edit
                                                     </a>
@@ -68,17 +77,37 @@
                                                             <i class="fa fa-trash"></i> Hapus
                                                         </button>
                                                     </form>
-
-                                                    @if (session('error'))
-                                                        <div class="alert alert-danger">
-                                                            {{ session('error') }}
-                                                        </div>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
-
                                     </tr>
+
+                                    {{-- 🔥 BARIS TAMBAHAN KHUSUS BUNDLE --}}
+                                    @if ($tool->item_type === 'bundle')
+                                        <tr id="bundle-{{ $tool->id }}" style="display: none;">
+                                            <td colspan="7">
+                                                <strong>Komponen Bundle:</strong>
+
+                                                <table class="table table-sm mt-2">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nama</th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($bundleItems[$tool->id] ?? [] as $item)
+                                                            <tr>
+                                                                <td>{{ $item->name }}</td>
+                                                                <td>{{ $item->qty }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                             <tfoot>
@@ -102,3 +131,17 @@
     </section>
 
 @endsection
+
+<script>
+    function toggleBundle(id, btn) {
+        let row = document.getElementById('bundle-' + id);
+
+        if (row.style.display === 'none') {
+            row.style.display = 'table-row';
+            btn.innerHTML = '-';
+        } else {
+            row.style.display = 'none';
+            btn.innerHTML = '+';
+        }
+    }
+</script>

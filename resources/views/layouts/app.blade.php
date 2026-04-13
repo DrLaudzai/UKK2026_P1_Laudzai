@@ -32,6 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/vendors.min.css">
@@ -117,38 +118,50 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <ul class="navigation navigation-main">
+
                 <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                    <a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a>
+                    <a href="{{ route('dashboard') }}">
+                        <i class="fa fa-home"></i>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
                 </li>
 
-                <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                <li class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}">
-                        <i class="feather icon-users"></i>
+                        <i class="fa fa-users"></i>
                         <span class="menu-title">Users</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                <li class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
                     <a href="{{ route('categories.index') }}">
-                        <i class="feather icon-categories"></i>
+                        <i class="fa fa-th-large"></i>
                         <span class="menu-title">Category</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ request()->routeIs('tools.*') ? 'active' : '' }}">
+                <li class="{{ request()->routeIs('tools.*') ? 'active' : '' }}">
                     <a href="{{ route('tools.index') }}">
-                        <i class="feather icon-tools"></i>
-                        <span class="menu-title">Tool</span>
+                        <i class="fa fa-wrench"></i>
+                        <span class="menu-title">Tools</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ request()->routeIs('tool-units.*') ? 'active' : '' }}">
+                <li class="{{ request()->routeIs('tool-units.*') ? 'active' : '' }}">
                     <a href="{{ route('tool-units.index') }}">
-                        <i class="feather icon-tools"></i>
+                        <i class="fa fa-cube"></i>
                         <span class="menu-title">Unit Tools</span>
                     </a>
                 </li>
+
+                <li class="{{ request()->routeIs('logs.*') ? 'active' : '' }}">
+                    <a href="{{ route('logs.index') }}">
+                        <i class="fa fa-history"></i>
+                        <span class="menu-title">Log Aktivitas</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -164,15 +177,15 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 {{-- Alert --}}
                 @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show mb-2">
-                    {{ session('success') }}
-                </div>
+                    <div class="alert alert-success alert-dismissible fade show mb-2">
+                        {{ session('success') }}
+                    </div>
                 @endif
 
                 @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show mb-2">
-                    {{ session('error') }}
-                </div>
+                    <div class="alert alert-danger alert-dismissible fade show mb-2">
+                        {{ session('error') }}
+                    </div>
                 @endif
 
                 {{-- ISI HALAMAN --}}
@@ -204,6 +217,11 @@ License: You must have a valid license purchased only from themeforest(the above
         @if (session('error'))
             alert({{ json_encode(session('error')) }});
         @endif
+    </script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace()
     </script>
 
 </body>

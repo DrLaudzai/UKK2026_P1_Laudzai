@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Tool;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ToolController extends Controller
 {
     public function index()
     {
-        $tools = Tool::orderBy('id', 'desc')->get();
-        return view('admin.tools.index', compact('tools'));
+        $tools = Tool::whereIn('item_type', ['single', 'bundle'])
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $bundleItems = DB::table('bundle_tools')
+            ->join('tools', 'bundle_tools.tool_id', '=', 'tools.id')
+            ->select('bundle_tools.*', 'tools.name')
+            ->get()
+            ->groupBy('bundle_id');
+
+        return view('admin.tools.index', compact('tools', 'bundleItems'));
     }
 
     public function create()
@@ -27,33 +37,50 @@ class ToolController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'item_type' => 'required',
-            'price' => 'nullable|numeric',
-            'min_credit_score' => 'nullable|numeric',
-            'photo_path' => 'nullable|image'
         ]);
 
-        $data = $request->all();
+        DB::beginTransaction();
 
-        // slug (boleh tetap ada)
-        if (!$request->code_slug) {
-            $data['code_slug'] = Str::slug($request->name);
+        try {
+            $data = $request->all();
+            $data['code_slug'] = $request->code_slug
+                ? $request->code_slug
+                : Str::slug($request->name);
+
+            if ($request->hasFile('photo_path')) {
+                $path = $request->file('photo_path')->store('tools', 'public');
+                $data['photo_path'] = $path;
+            }
+
+            $tool = Tool::create($data);
+
+            if ($request->item_type === 'bundle' && $request->bundle_name) {
+                foreach ($request->bundle_name as $index => $name) {
+                    $subTool = Tool::create([
+                        'name' => $name,
+                        'category_id' => $tool->category_id,
+                        'item_type' => 'bundle_tool',
+                        'code_slug' => Str::slug($name),
+                        'photo_path' => $tool->photo_path,
+                        'description' => $tool->description,
+                    ]);
+
+                    DB::table('bundle_tools')->insert([
+                        'bundle_id' => $tool->id,
+                        'tool_id' => $subTool->id,
+                        'qty' => $request->bundle_qty[$index],
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('tools.index')
+                ->with('success', 'Tools berhasil ditambahkan');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('error', $e->getMessage());
         }
-
-        // 🔥 INI YANG PENTING (CODE UNTUK UNIT)
-        $data['code'] = strtoupper(str_replace(' ', '-', $request->name));
-
-        // upload photo
-        if ($request->hasFile('photo_path')) {
-            $file = $request->file('photo_path');
-            $path = $file->store('tools', 'public');
-            $data['photo_path'] = $path;
-        }
-
-        Tool::create($data);
-
-        return redirect()->route('tools.index')
-            ->with('success', 'Tools berhasil ditambahkan');
-
     }
 
     public function edit($id)
@@ -61,39 +88,69 @@ class ToolController extends Controller
         $tool = Tool::findOrFail($id);
         $categories = Category::all();
 
-        return view('admin.tools.edit', compact('tool', 'categories'));
+        // ambil bundle items
+        $bundleItems = DB::table('bundle_tools')
+            ->join('tools', 'bundle_tools.tool_id', '=', 'tools.id')
+            ->select('bundle_tools.*', 'tools.name')
+            ->where('bundle_id', $tool->id)
+            ->get();
+
+        return view('admin.tools.edit', compact('tool', 'categories', 'bundleItems'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'category_id' => 'required',
-            'item_type' => 'required',
-            'price' => 'nullable|numeric',
-            'min_credit_score' => 'nullable|numeric',
-            'photo_path' => 'nullable|image'
-        ]);
+        DB::beginTransaction();
 
-        $tool = Tool::findOrFail($id);
-        $data = $request->all();
+        try {
+            $tool = Tool::findOrFail($id);
+            $data = $request->all();
 
-        // slug otomatis kalau kosong saja
-        if (!$request->code_slug) {
-            $data['code_slug'] = Str::slug($request->name);
+            $data['code_slug'] = $request->code_slug
+                ? $request->code_slug
+                : Str::slug($request->name);
+
+            if ($request->hasFile('photo_path')) {
+                $path = $request->file('photo_path')->store('tools', 'public');
+                $data['photo_path'] = $path;
+            }
+
+            $tool->update($data);
+
+            $oldItems = DB::table('bundle_tools')
+                ->where('bundle_id', $tool->id)
+                ->pluck('tool_id');
+
+            Tool::whereIn('id', $oldItems)->delete();
+            DB::table('bundle_tools')->where('bundle_id', $tool->id)->delete();
+
+            if ($request->item_type === 'bundle' && $request->bundle_name) {
+                foreach ($request->bundle_name as $index => $name) {
+                    $subTool = Tool::create([
+                        'name' => $name,
+                        'category_id' => $tool->category_id,
+                        'item_type' => 'bundle_tool',
+                        'code_slug' => Str::slug($name),
+                        'photo_path' => $tool->photo_path,
+                        'description' => $tool->description,
+                    ]);
+
+                    DB::table('bundle_tools')->insert([
+                        'bundle_id' => $tool->id,
+                        'tool_id' => $subTool->id,
+                        'qty' => $request->bundle_qty[$index],
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('tools.index')
+                ->with('success', 'Tools berhasil diupdate');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('error', $e->getMessage());
         }
-
-        // update photo
-        if ($request->hasFile('photo_path')) {
-            $file = $request->file('photo_path');
-            $path = $file->store('tools', 'public');
-            $data['photo_path'] = $path;
-        }
-
-        $tool->update($data);
-
-        return redirect()->route('tools.index')
-            ->with('success', 'Tools berhasil diupdate');
     }
 
     public function destroy($id)
@@ -104,8 +161,36 @@ class ToolController extends Controller
             return back()->with('error', 'Tool tidak bisa dihapus karena masih memiliki unit!');
         }
 
+        $usedInBundle = DB::table('bundle_tools')
+            ->where('tool_id', $tool->id)
+            ->exists();
+
+        if ($usedInBundle) {
+            return back()->with('error', 'Tool tidak bisa dihapus karena digunakan dalam bundle!');
+        }
+
+        $subItems = DB::table('bundle_tools')
+            ->where('bundle_id', $tool->id)
+            ->pluck('tool_id');
+
+        DB::table('bundle_tools')->where('bundle_id', $tool->id)->delete();
+        Tool::whereIn('id', $subItems)->delete();
+
         $tool->delete();
 
         return back()->with('success', 'Tools berhasil dihapus');
+    }
+
+    public function show($id)
+    {
+        $tool = Tool::findOrFail($id);
+
+        $bundleItems = DB::table('bundle_tools')
+            ->join('tools', 'bundle_tools.tool_id', '=', 'tools.id')
+            ->select('bundle_tools.*', 'tools.name')
+            ->where('bundle_tools.bundle_id', $tool->id)
+            ->get();
+
+        return view('admin.tools.show', compact('tool', 'bundleItems'));
     }
 }

@@ -3,91 +3,91 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body"><!-- Grouped multiple cards for statistics starts here -->
-                <div class="row grouped-multiple-statistics-card">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div
-                                            class="d-flex align-items-start mb-sm-1 mb-xl-0 border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon primary d-flex justify-content-center mr-3">
-                                                <i
-                                                    class="icon p-1 icon-bar-chart customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">$95k</h3>
-                                                <p class="sub-heading">Revenue</p>
-                                            </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="success"><i class="fa fa-long-arrow-up"></i>
-                                                    5.2%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div
-                                            class="d-flex align-items-start mb-sm-1 mb-xl-0 border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon danger d-flex justify-content-center mr-3">
-                                                <i
-                                                    class="icon p-1 icon-pie-chart customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">18.63%</h3>
-                                                <p class="sub-heading">Growth Rate</p>
-                                            </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="danger"><i class="fa fa-long-arrow-down"></i>
-                                                    2.0%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div
-                                            class="d-flex align-items-start border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon success d-flex justify-content-center mr-3">
-                                                <i class="icon p-1 icon-graph customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">$27k</h3>
-                                                <p class="sub-heading">Sales</p>
-                                            </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="success"><i class="fa fa-long-arrow-up"></i>
-                                                    10.0%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div class="d-flex align-items-start">
-                                            <span class="card-icon warning d-flex justify-content-center mr-3">
-                                                <i
-                                                    class="icon p-1 icon-basket-loaded customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">13700</h3>
-                                                <p class="sub-heading">Orders</p>
-                                            </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="danger"><i class="fa fa-long-arrow-down"></i>
-                                                    13.6%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+<div class="content-body">
+    <div class="row">
+
+        {{-- TOTAL TOOLS --}}
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>{{ $totalTools }}</h4>
+                        <span>Tools</span>
                     </div>
+                    <i class="fa fa-wrench fa-2x"></i>
+                </div>
+            </div>
+        </div>
+
+        {{-- TOTAL BUNDLE --}}
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="card bg-info text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>{{ $totalBundle }}</h4>
+                        <span>Bundle</span>
+                    </div>
+                    <i class="fa fa-cubes fa-2x"></i>
+                </div>
+            </div>
+        </div>
+
+        {{-- TOTAL UNIT --}}
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="card bg-success text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>{{ $totalUnit }}</h4>
+                        <span>Unit</span>
+                    </div>
+                    <i class="fa fa-cube fa-2x"></i>
+                </div>
+            </div>
+        </div>
+
+        {{-- TOTAL USER --}}
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="card bg-warning text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>{{ $totalUser }}</h4>
+                        <span>User</span>
+                    </div>
+                    <i class="fa fa-users fa-2x"></i>
+                </div>
+            </div>
+        </div>
+
+        {{-- TOTAL LOG
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="card bg-dark text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>{{ $totalLog }}</h4>
+                        <span>Activity Log</span>
+                    </div>
+                    <i class="fa fa-history fa-2x"></i>
+                </div>
+            </div>
+        </div> --}}
+
+    </div>
+
+    {{-- INFO PANEL --}}
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4>Selamat Datang di Sistem Inventaris</h4>
+                    <p class="text-muted">
+                        Gunakan menu di samping untuk mengelola Tools, Bundle, Unit, dan aktivitas sistem.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END: 
+
+</div>
+
+@endsection
