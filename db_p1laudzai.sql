@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 13, 2026 at 06:51 AM
+-- Generation Time: Apr 14, 2026 at 05:29 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -58,7 +58,25 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `action`, `module`, `description`,
 (13, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"YO-001\\\",\\\"tool_id\\\":19,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:13:40'),
 (14, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Muhammad Farhan', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Muhammad Farhan\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"111\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"code_slug\\\":\\\"yono\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png\\\",\\\"id\\\":20}\"', '127.0.0.1', '2026-04-12 23:18:22'),
 (15, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Handphone', '\"{\\\"name\\\":\\\"Handphone\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"handphone\\\",\\\"photo_path\\\":\\\"tools\\\\\\/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png\\\",\\\"description\\\":null,\\\"id\\\":21}\"', '127.0.0.1', '2026-04-12 23:18:22'),
-(16, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"YONO-001\\\",\\\"tool_id\\\":20,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:18:40');
+(16, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"YONO-001\\\",\\\"tool_id\\\":20,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-12 23:18:40'),
+(17, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: VV', '\"{\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"VV\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"100\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"code_slug\\\":\\\"wwww\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/xhUAWdhnexHcppKLF1v6zdOiEIFNYZ64SbDzKjjs.png\\\",\\\"id\\\":22}\"', '127.0.0.1', '2026-04-13 00:11:25'),
+(18, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: dd', '\"{\\\"name\\\":\\\"dd\\\",\\\"category_id\\\":\\\"9\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"dd\\\",\\\"photo_path\\\":\\\"tools\\\\\\/xhUAWdhnexHcppKLF1v6zdOiEIFNYZ64SbDzKjjs.png\\\",\\\"price\\\":\\\"1\\\",\\\"description\\\":\\\"ffff\\\",\\\"id\\\":23}\"', '127.0.0.1', '2026-04-13 00:11:25'),
+(20, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Laudzai Muaddab Budis', '\"{\\\"id\\\":19,\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Laudzai Muaddab Budis\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"11\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"yo\\\",\\\"photo_path\\\":\\\"tools\\\\\\/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:07:52'),
+(23, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: VVs', '\"{\\\"id\\\":22,\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"VVs\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"100\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"wwww\\\",\\\"photo_path\\\":\\\"tools\\\\\\/xhUAWdhnexHcppKLF1v6zdOiEIFNYZ64SbDzKjjs.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:40:23'),
+(24, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: VVsa', '\"{\\\"id\\\":22,\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"VVsa\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"100\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"wwww\\\",\\\"photo_path\\\":\\\"tools\\\\\\/xhUAWdhnexHcppKLF1v6zdOiEIFNYZ64SbDzKjjs.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:40:35'),
+(25, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Muhammad Farhans', '\"{\\\"id\\\":20,\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Muhammad Farhans\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"111\\\",\\\"min_credit_score\\\":\\\"2\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"yono\\\",\\\"photo_path\\\":\\\"tools\\\\\\/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:41:15'),
+(26, 4, 'tool.DiHapus', 'tool', 'DiHapus tool: VVsa', '\"{\\\"id\\\":22,\\\"category_id\\\":9,\\\"name\\\":\\\"VVsa\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":100,\\\"min_credit_score\\\":2,\\\"description\\\":null,\\\"code_slug\\\":\\\"wwww\\\",\\\"photo_path\\\":\\\"tools\\\\\\/xhUAWdhnexHcppKLF1v6zdOiEIFNYZ64SbDzKjjs.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:49:51'),
+(27, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Laudzai Muaddab Budiss', '\"{\\\"id\\\":19,\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Laudzai Muaddab Budiss\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"11\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"yo\\\",\\\"photo_path\\\":\\\"tools\\\\\\/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:50:16'),
+(28, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Muhammad Farhans', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Muhammad Farhans\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"200\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"code_slug\\\":\\\"dd\\\",\\\"description\\\":null,\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"id\\\":24}\"', '127.0.0.1', '2026-04-13 01:50:45'),
+(29, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: xxx', '\"{\\\"name\\\":\\\"xxx\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"xxx\\\",\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"price\\\":\\\"11\\\",\\\"description\\\":null,\\\"id\\\":25}\"', '127.0.0.1', '2026-04-13 01:50:45'),
+(30, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Muhammad Farhanss', '\"{\\\"id\\\":24,\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Muhammad Farhanss\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"200\\\",\\\"min_credit_score\\\":\\\"1\\\",\\\"description\\\":null,\\\"code_slug\\\":\\\"dd\\\",\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:51:06'),
+(31, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: xxx', '\"{\\\"id\\\":25,\\\"category_id\\\":7,\\\"name\\\":\\\"xxx\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"price\\\":\\\"11\\\",\\\"min_credit_score\\\":null,\\\"description\\\":\\\"-\\\",\\\"code_slug\\\":\\\"xxx\\\",\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-13 01:51:06'),
+(32, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: ssss', '\"{\\\"name\\\":\\\"ssss\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"ssss\\\",\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"price\\\":\\\"11\\\",\\\"description\\\":\\\"ddd\\\",\\\"id\\\":26}\"', '127.0.0.1', '2026-04-13 01:53:03'),
+(33, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Handphone', '\"{\\\"name\\\":\\\"Handphone\\\",\\\"category_id\\\":\\\"7\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"handphone\\\",\\\"photo_path\\\":\\\"tools\\\\\\/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp\\\",\\\"price\\\":\\\"222\\\",\\\"description\\\":\\\"dddsss\\\",\\\"id\\\":27}\"', '127.0.0.1', '2026-04-13 01:55:18'),
+(34, 4, 'user.DiBuat', 'user', 'DiBuat user: 6', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"peminjam\\\",\\\"updated_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"id\\\":6}\"', '127.0.0.1', '2026-04-13 17:56:17'),
+(35, 4, 'user.DiBuat', 'user', 'DiBuat user: 7', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"petugas@gmail.com\\\",\\\"role\\\":\\\"petugas\\\",\\\"updated_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"id\\\":7}\"', '127.0.0.1', '2026-04-13 19:26:23'),
+(36, 4, 'user.DiUpdate', 'user', 'DiUpdate user: 7', '\"{\\\"id\\\":7,\\\"email\\\":\\\"petugas@ukk2026.com\\\",\\\"role\\\":\\\"Petugas\\\",\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-14T02:27:02.000000Z\\\"}\"', '127.0.0.1', '2026-04-13 19:27:02'),
+(37, 4, 'user.DiBuat', 'user', 'DiBuat user: 8', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"aan@gmail.comm\\\",\\\"role\\\":\\\"peminjam\\\",\\\"updated_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"id\\\":8}\"', '127.0.0.1', '2026-04-13 21:25:46');
 
 -- --------------------------------------------------------
 
@@ -116,7 +134,7 @@ CREATE TABLE `bundle_tools` (
 --
 
 INSERT INTO `bundle_tools` (`id`, `bundle_id`, `tool_id`, `qty`, `created_at`, `updated_at`) VALUES
-(4, 20, 21, 1, NULL, NULL);
+(7, 24, 26, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -159,6 +177,17 @@ CREATE TABLE `loans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `loans`
+--
+
+INSERT INTO `loans` (`id`, `user_id`, `tool_id`, `unit_code`, `employee_id`, `status`, `loan_date`, `due_date`, `purpose`, `notes`, `created_at`, `updated_at`) VALUES
+(1, 6, 19, 'YO-001', 7, 'closed', '2026-04-14', '2026-04-24', 'ddd', NULL, '2026-04-13 18:43:44', '2026-04-13 20:58:27'),
+(2, 6, 24, 'YONO-001', 7, 'closed', '2026-06-20', '2026-06-21', 'injem', 'Menunggu konfirmasi pengembalian', '2026-04-13 18:45:49', '2026-04-13 20:58:21'),
+(3, 6, 19, 'YO-001', 7, 'rejected', '2026-04-14', '2026-04-30', 'pengen', 'malas', '2026-04-13 21:00:39', '2026-04-13 21:01:05'),
+(4, 8, 20, 'YO-001', 7, 'closed', '2026-04-14', '2026-04-30', 'ssss', NULL, '2026-04-13 21:27:04', '2026-04-13 21:51:29'),
+(5, 6, 20, 'YONO-001', 7, 'closed', '2026-04-14', '2026-04-14', 'ee', NULL, '2026-04-13 21:30:19', '2026-04-13 21:51:32');
+
 -- --------------------------------------------------------
 
 --
@@ -200,13 +229,23 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `returns` (
   `id` int NOT NULL,
   `loan_id` int NOT NULL COMMENT 'FK ke loans  ,   1 loan hanya bisa punya 1 return',
-  `employee_id` int NOT NULL COMMENT 'FK ke users   (  Employee  )   yang mencatat pengembalian',
-  `condition_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'FK ke unit_conditions  ,   kondisi alat saat dikembalikan',
+  `employee_id` int DEFAULT NULL COMMENT 'FK ke users   (  Employee  )   yang mencatat pengembalian',
+  `condition_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'FK ke unit_conditions  ,   kondisi alat saat dikembalikan',
   `return_date` date NOT NULL COMMENT 'Tanggal aktual alat dikembalikan',
   `proof` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Catatan pengembalian dari Employee',
-  `created_at` timestamp NOT NULL
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `returns`
+--
+
+INSERT INTO `returns` (`id`, `loan_id`, `employee_id`, `condition_id`, `return_date`, `proof`, `notes`, `created_at`) VALUES
+(1, 1, 7, NULL, '2026-04-14', 'returns/2oIrxiwQ0xb3tO0C8lxL8808ovoABQRb9x44JmfJ.png', 'Dikonfirmasi petugas', NULL),
+(2, 2, 7, NULL, '2026-04-14', 'returns/UpKqdZhlFbIFnAHu7eRxyhGdj3dZgVgBQ6EKmnoV.webp', 'Dikonfirmasi petugas', NULL),
+(3, 4, 7, NULL, '2026-04-14', 'returns/UflW2dnACA4XYPymSHg5sIOGQYBg4D53Z9kfv2i6.png', 'Dikonfirmasi petugas', NULL),
+(4, 5, 7, NULL, '2026-04-14', 'returns/cQ5mTYdExpI21RBuwVibFlYcQsS2dyu2UMNZBkUE.png', 'Dikonfirmasi petugas', NULL);
 
 -- --------------------------------------------------------
 
@@ -248,9 +287,10 @@ CREATE TABLE `tools` (
 
 INSERT INTO `tools` (`id`, `category_id`, `name`, `item_type`, `price`, `min_credit_score`, `description`, `code_slug`, `photo_path`, `created_at`, `updated_at`) VALUES
 (18, 7, 'Handphone', 'bundle_tool', NULL, NULL, NULL, 'handphone', 'tools/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp', NULL, NULL),
-(19, 7, 'Laudzai Muaddab Budi', 'single', 11, 1, NULL, 'yo', 'tools/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png', NULL, NULL),
-(20, 7, 'Muhammad Farhan', 'bundle', 111, 2, NULL, 'yono', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL),
-(21, 7, 'Handphone', 'bundle_tool', NULL, NULL, NULL, 'handphone', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL);
+(19, 7, 'Laudzai Muaddab Budiss', 'single', 11, 1, NULL, 'yo', 'tools/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png', NULL, NULL),
+(20, 7, 'Muhammad Farhans', 'bundle', 111, 2, NULL, 'yono', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL),
+(24, 7, 'Muhammad Farhanss', 'bundle', 200, 1, NULL, 'dd', 'tools/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp', NULL, NULL),
+(26, 7, 'ssss', 'bundle_tool', 11, NULL, 'ddd', 'ssss', 'tools/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -289,6 +329,15 @@ CREATE TABLE `unit_conditions` (
   `recorded_at` timestamp NOT NULL COMMENT 'Waktu kondisi dicatat. Kondisi terkini = recorded_at paling baru'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `unit_conditions`
+--
+
+INSERT INTO `unit_conditions` (`id`, `unit_code`, `return_id`, `conditions`, `notes`, `recorded_at`) VALUES
+('69ddbb28c9ab2', 'YONO-001', 2, 'good', 'Dari peminjam', '2026-04-13 20:57:28'),
+('69ddc250bc4b0', 'YO-001', 3, 'broken', 'Dari peminjam', '2026-04-13 21:28:00'),
+('69ddc30a3c4d9', 'YONO-001', 4, 'broken', 'Dari peminjam', '2026-04-13 21:31:06');
+
 -- --------------------------------------------------------
 
 --
@@ -311,7 +360,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `credit_score`, `is_restricted`, `created_at`, `updated_at`) VALUES
-(4, 'admin@ukk2026.com', '$2y$12$9bERSRUiOE2s5P4fTBW46.jw7csYC/YTcFwd9pZtPIDTTtNBKnJge', 'Admin', 100, 0, '2026-04-07 23:54:55', '2026-04-07 23:54:55');
+(4, 'admin@ukk2026.com', '$2y$12$9bERSRUiOE2s5P4fTBW46.jw7csYC/YTcFwd9pZtPIDTTtNBKnJge', 'Admin', 100, 0, '2026-04-07 23:54:55', '2026-04-07 23:54:55'),
+(6, 'peminjam@ukk2026.com', '$2y$12$b57o5hvDlXvxUp/0VAV2guXZg8DgekZ/FwXhDZ.uyghuhm.y3DFIu', 'Peminjam', 100, 0, '2026-04-13 17:56:17', '2026-04-13 17:56:17'),
+(7, 'petugas@ukk2026.com', '$2y$12$Bkucpnf8I0VvUoiWmg1YjeP92f4AyjQiKDshKi4rZjV/dYoKY5kL2', 'Petugas', 100, 0, '2026-04-13 19:26:23', '2026-04-13 19:27:02'),
+(8, 'aan@gmail.comm', '$2y$12$P8.J5JZh02rLfmRBplmUPez4BJdIK.j3DU8UOEL3Nbzv36SBWN1Ra', 'Peminjam', 100, 0, '2026-04-13 21:25:46', '2026-04-13 21:25:46');
 
 -- --------------------------------------------------------
 
@@ -335,6 +387,9 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`nik`, `user_id`, `name`, `no_hp`, `address`, `birth_date`, `created_at`, `updated_at`) VALUES
+('2323434343', 7, 'Farhan', '3434343334', 'assssss', '2026-04-14', '2026-04-13 19:26:23', '2026-04-13 19:26:23'),
+('232343434333', 8, 'Farhan Kebab', '2323232323', 'sssss', '2026-04-14', '2026-04-13 21:25:46', '2026-04-13 21:25:46'),
+('2323442334', 6, 'Afthan', '83838888883', 'Jl.jati', '2026-04-14', '2026-04-13 17:56:17', '2026-04-13 17:56:17'),
 ('2383939939', 4, 'Laudzai Muaddab Budi', '09228282882', 'Parakan Saat No. 88', '2026-04-08', '2026-04-07 23:55:32', '2026-04-07 23:55:32');
 
 -- --------------------------------------------------------
@@ -479,7 +534,7 @@ ALTER TABLE `violations`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `appeals`
@@ -497,7 +552,7 @@ ALTER TABLE `app_configs`
 -- AUTO_INCREMENT for table `bundle_tools`
 --
 ALTER TABLE `bundle_tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -509,7 +564,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -521,7 +576,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `returns`
 --
 ALTER TABLE `returns`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `settlements`
@@ -533,13 +588,13 @@ ALTER TABLE `settlements`
 -- AUTO_INCREMENT for table `tools`
 --
 ALTER TABLE `tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `violations`

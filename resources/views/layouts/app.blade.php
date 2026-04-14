@@ -118,8 +118,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
+
+            @php
+                $role = strtolower(auth()->user()->role);
+            @endphp
+
             <ul class="navigation navigation-main">
 
+                {{-- DASHBOARD (SEMUA ROLE) --}}
                 <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}">
                         <i class="fa fa-home"></i>
@@ -127,40 +133,91 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
 
-                <li class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
-                    <a href="{{ route('users.index') }}">
-                        <i class="fa fa-users"></i>
-                        <span class="menu-title">Users</span>
-                    </a>
-                </li>
+                {{-- ================= ADMIN ================= --}}
+                @if ($role === 'admin')
+                    <li class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
+                        <a href="{{ route('users.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span class="menu-title">Users</span>
+                        </a>
+                    </li>
 
-                <li class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
-                    <a href="{{ route('categories.index') }}">
-                        <i class="fa fa-th-large"></i>
-                        <span class="menu-title">Category</span>
-                    </a>
-                </li>
+                    <li class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                        <a href="{{ route('categories.index') }}">
+                            <i class="fa fa-th-large"></i>
+                            <span class="menu-title">Category</span>
+                        </a>
+                    </li>
 
-                <li class="{{ request()->routeIs('tools.*') ? 'active' : '' }}">
-                    <a href="{{ route('tools.index') }}">
-                        <i class="fa fa-wrench"></i>
-                        <span class="menu-title">Tools</span>
-                    </a>
-                </li>
+                    <li class="{{ request()->routeIs('tools.*') ? 'active' : '' }}">
+                        <a href="{{ route('tools.index') }}">
+                            <i class="fa fa-wrench"></i>
+                            <span class="menu-title">Tools</span>
+                        </a>
+                    </li>
 
-                <li class="{{ request()->routeIs('tool-units.*') ? 'active' : '' }}">
-                    <a href="{{ route('tool-units.index') }}">
-                        <i class="fa fa-cube"></i>
-                        <span class="menu-title">Unit Tools</span>
-                    </a>
-                </li>
+                    <li class="{{ request()->routeIs('tool-units.*') ? 'active' : '' }}">
+                        <a href="{{ route('tool-units.index') }}">
+                            <i class="fa fa-cube"></i>
+                            <span class="menu-title">Unit Tools</span>
+                        </a>
+                    </li>
 
-                <li class="{{ request()->routeIs('logs.*') ? 'active' : '' }}">
-                    <a href="{{ route('logs.index') }}">
-                        <i class="fa fa-history"></i>
-                        <span class="menu-title">Log Aktivitas</span>
-                    </a>
-                </li>
+                    <li class="{{ request()->routeIs('logs.*') ? 'active' : '' }}">
+                        <a href="{{ route('logs.index') }}">
+                            <i class="fa fa-history"></i>
+                            <span class="menu-title">Log Aktivitas</span>
+                        </a>
+                    </li>
+                @endif
+
+
+                {{-- ================= PEMINJAM ================= --}}
+                @if ($role === 'peminjam')
+                    <li class="{{ request()->routeIs('peminjam.tools.*') ? 'active' : '' }}">
+                        <a href="{{ route('peminjam.tools.index') }}">
+                            <i class="fa fa-box"></i>
+                            <span class="menu-title">Daftar Alat</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('peminjam.peminjaman.*') ? 'active' : '' }}">
+                        <a href="{{ route('peminjam.peminjaman.index') }}">
+                            <i class="fa fa-exchange-alt"></i>
+                            <span class="menu-title">Peminjaman</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('peminjam.pengembalian.*') ? 'active' : '' }}">
+                        <a href="{{ route('peminjam.pengembalian.index') }}">
+                            <i class="fa fa-undo"></i>
+                            <span class="menu-title">Pengembalian</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('peminjam.history.*') ? 'active' : '' }}">
+                        <a href="{{ route('peminjam.history.index') }}">
+                            <i class="fa fa-history"></i>
+                            <span class="menu-title">History</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if ($role === 'petugas')
+                    <li class="{{ request()->routeIs('petugas.peminjaman.*') ? 'active' : '' }}">
+                        <a href="{{ route('petugas.peminjaman.index') }}">
+                            <i class="fa fa-list"></i>
+                            <span>Peminjaman</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('petugas.peminjaman.history') ? 'active' : '' }}">
+                        <a href="{{ route('petugas.peminjaman.history') }}">
+                            <i class="fa fa-history"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                @endif
 
             </ul>
         </div>
@@ -223,6 +280,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script>
         feather.replace()
     </script>
+
 
 </body>
 <!-- END: Body-->

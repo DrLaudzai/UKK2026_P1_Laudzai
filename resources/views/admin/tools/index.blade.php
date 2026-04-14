@@ -4,6 +4,10 @@
 
 @section('content')
 
+    @php
+        $role = auth()->check() ? strtolower(auth()->user()->role) : null;
+    @endphp
+
     <section id="configuration">
         <div class="row">
             <div class="col-12">
@@ -12,9 +16,11 @@
                     <div class="card-header d-flex justify-content-between">
                         <h4 class="card-title">Data Tools</h4>
 
-                        <a href="{{ route('tools.create') }}" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Tambah Tools
-                        </a>
+                        @if ($role === 'admin')
+                            <a href="{{ route('tools.create') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> Tambah Tools
+                            </a>
+                        @endif
                     </div>
 
                     <div class="card-body">
@@ -65,18 +71,22 @@
                                                         <i class="fa fa-eye"></i> View
                                                     </a>
 
-                                                    <a class="dropdown-item" href="{{ route('tools.edit', $tool->id) }}">
-                                                        <i class="fa fa-edit"></i> Edit
-                                                    </a>
+                                                    @if ($role === 'admin')
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('tools.edit', $tool->id) }}">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </a>
 
-                                                    <form action="{{ route('tools.destroy', $tool->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
+                                                        <form action="{{ route('tools.destroy', $tool->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
 
-                                                        <button class="dropdown-item text-danger">
-                                                            <i class="fa fa-trash"></i> Hapus
-                                                        </button>
-                                                    </form>
+                                                            <button class="dropdown-item text-danger">
+                                                                <i class="fa fa-trash"></i> Hapus
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
