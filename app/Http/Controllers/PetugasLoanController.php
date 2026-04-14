@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Loan;
+use App\Models\UnitCondition;
 
 class PetugasLoanController extends Controller
 {
@@ -53,29 +54,51 @@ class PetugasLoanController extends Controller
     }
 
     // ================= KONFIRMASI RETURN =================
-    public function confirmReturn($id)
-    {
-        $loan = Loan::where('status', 'active')->findOrFail($id);
+   public function confirmReturn(Request $request, $id)
+{
+    $request->validate([
+        'condition' => 'required|in:good,broken,maintenance',
+        'notes' => 'nullable'
+    ]);
 
-        if (!$loan->return) {
-            return back()->with('error', 'Belum ada pengajuan return');
-        }
+    $loan = Loan::where('status', 'active')->findOrFail($id);
 
-        if ($loan->return->employee_id) {
-            return back()->with('error', 'Sudah dikonfirmasi');
-        }
-
-        $loan->return->update([
-            'employee_id' => auth()->id(),
-            'notes' => 'Dikonfirmasi petugas'
-        ]);
-
-        $loan->update([
-            'status' => 'closed'
-        ]);
-
-        return back()->with('success', 'Return dikonfirmasi');
+    if (!$loan->return) {
+        return back()->with('error', 'Belum ada pengajuan return');
     }
+
+    if ($loan->return->employee_id) {
+        return back()->with('error', 'Sudah dikonfirmasi');
+    }
+
+    // 1. buat unit condition dulu
+    $condition = UnitCondition::create([
+        'id' => uniqid(),
+        'unit_code' => $loan->unit_code,
+        'conditions' => $request->condition,
+        'notes' => 'Dari petugas',
+        'recorded_at' => now(),
+        'return_id' => null
+    ]);
+
+    // 2. update return pakai ID yang benar
+    $loan->return->update([
+        'employee_id' => auth()->id(),
+        'condition_id' => $condition->id, // ✅ ini FIX
+        'notes' => $request->notes ?? 'Dikonfirmasi petugas'
+    ]);
+
+    // 3. update relation balik (optional tapi bagus)
+    $condition->update([
+        'return_id' => $loan->return->id
+    ]);
+
+    $loan->update([
+        'status' => 'closed'
+    ]);
+
+    return back()->with('success', 'Return dikonfirmasi');
+}
 
     public function returnRequests()
     {

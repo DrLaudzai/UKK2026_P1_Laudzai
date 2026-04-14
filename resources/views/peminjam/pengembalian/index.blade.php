@@ -41,14 +41,6 @@
                                         enctype="multipart/form-data">
                                         @csrf
 
-                                        <select name="condition" class="form-control" required>
-                                            <option value="">Pilih Kondisi</option>
-                                            <option value="good">Baik</option>
-                                            <option value="broken">Rusak</option>
-                                            <option value="maintenance">Maintenance</option>
-                                        </select>
-
-
                                         <input type="file" name="proof" class="form-control mb-1" required>
 
                                         <button class="btn btn-sm btn-danger">

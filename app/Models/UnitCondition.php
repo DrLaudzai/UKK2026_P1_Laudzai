@@ -4,18 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class UnitCondition extends Model
 {
+    public $incrementing = false;
+    protected $keyType = 'string'; 
     protected $table = 'unit_conditions';
-
-    public $timestamps = false;
 
     protected $fillable = [
         'id',
         'unit_code',
-        'return_id',
         'conditions',
         'notes',
-        'recorded_at'
+        'recorded_at',
+        'return_id'
     ];
+
+    public $timestamps = false; // karena kamu tidak pakai created_at default
 }

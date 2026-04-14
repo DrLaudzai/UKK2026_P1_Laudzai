@@ -7,7 +7,6 @@ use App\Models\Loan;
 use App\Models\Tool;
 use App\Models\ToolUnit;
 use App\Models\ReturnModel;
-use App\Models\UnitCondition;
 
 class LoanController extends Controller
 {
@@ -94,7 +93,6 @@ class LoanController extends Controller
     public function requestReturn(Request $request, $id)
     {
         $request->validate([
-            'condition' => 'required|in:good,broken,maintenance',
             'proof' => 'required|image|max:2048'
         ]);
 
@@ -115,16 +113,6 @@ class LoanController extends Controller
             'return_date' => now(),
             'proof' => $path,
             'notes' => 'Diajukan oleh peminjam'
-        ]);
-
-        // simpan kondisi
-        UnitCondition::create([
-            'id' => uniqid(),
-            'unit_code' => $loan->unit_code,
-            'return_id' => $return->id,
-            'conditions' => $request->condition,
-            'notes' => 'Dari peminjam',
-            'recorded_at' => now()
         ]);
 
         return back()->with('success', 'Pengembalian diajukan');

@@ -24,6 +24,42 @@
 
                 <tbody>
                     @foreach ($loans as $loan)
+                        <div class="modal fade" id="returnModal{{ $loan->id }}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <form action="{{ route('petugas.peminjaman.confirmReturn', $loan->id) }}" method="POST">
+                                        @csrf
+
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Konfirmasi Pengembalian</h5>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            <label>Kondisi Barang</label>
+                                            <select name="condition" class="form-control" required>
+                                                <option value="">Pilih kondisi</option>
+                                                <option value="good">Good</option>
+                                                <option value="broken">Broken</option>
+                                                <option value="maintenance">Maintenance</option>
+                                            </select>
+
+                                            <label class="mt-2">Catatan (opsional)</label>
+                                            <textarea name="notes" class="form-control"></textarea>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary">Konfirmasi</button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- APPROVE MODAL -->
                         <div class="modal fade" id="approveModal{{ $loan->id }}" tabindex="-1">
                             <div class="modal-dialog">
@@ -117,13 +153,11 @@
 
                                 {{-- RETURN --}}
                                 @if ($loan->status == 'active' && $loan->return && !$loan->return->employee_id)
-                                    <form action="{{ route('petugas.peminjaman.confirmReturn', $loan->id) }}" method="POST"
-                                        style="display:inline;">
                                         @csrf
-                                        <button class="btn btn-sm btn-primary">
+                                        <button class="btn btn-sm btn-primary" data-toggle="modal"
+                                            data-target="#returnModal{{ $loan->id }}">
                                             Konfirmasi Return
                                         </button>
-                                    </form>
                                 @endif
 
                             </td>
