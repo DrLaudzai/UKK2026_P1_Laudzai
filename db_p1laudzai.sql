@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 14, 2026 at 05:29 AM
+-- Generation Time: Apr 15, 2026 at 07:46 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -76,7 +76,22 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `action`, `module`, `description`,
 (34, 4, 'user.DiBuat', 'user', 'DiBuat user: 6', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"peminjam\\\",\\\"updated_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"id\\\":6}\"', '127.0.0.1', '2026-04-13 17:56:17'),
 (35, 4, 'user.DiBuat', 'user', 'DiBuat user: 7', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"petugas@gmail.com\\\",\\\"role\\\":\\\"petugas\\\",\\\"updated_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"id\\\":7}\"', '127.0.0.1', '2026-04-13 19:26:23'),
 (36, 4, 'user.DiUpdate', 'user', 'DiUpdate user: 7', '\"{\\\"id\\\":7,\\\"email\\\":\\\"petugas@ukk2026.com\\\",\\\"role\\\":\\\"Petugas\\\",\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T02:26:23.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-14T02:27:02.000000Z\\\"}\"', '127.0.0.1', '2026-04-13 19:27:02'),
-(37, 4, 'user.DiBuat', 'user', 'DiBuat user: 8', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"aan@gmail.comm\\\",\\\"role\\\":\\\"peminjam\\\",\\\"updated_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"id\\\":8}\"', '127.0.0.1', '2026-04-13 21:25:46');
+(37, 4, 'user.DiBuat', 'user', 'DiBuat user: 8', '\"{\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"email\\\":\\\"aan@gmail.comm\\\",\\\"role\\\":\\\"peminjam\\\",\\\"updated_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"created_at\\\":\\\"2026-04-14T04:25:46.000000Z\\\",\\\"id\\\":8}\"', '127.0.0.1', '2026-04-13 21:25:46'),
+(38, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Handphone', '\"{\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Handphone\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"100\\\",\\\"min_credit_score\\\":\\\"5\\\",\\\"code_slug\\\":\\\"Hp\\\",\\\"description\\\":\\\"GG\\\",\\\"photo_path\\\":\\\"tools\\\\\\/mfTLCyKP0naHYf8c95nb7yKq5V73Zj28cG2Fql9U.webp\\\",\\\"id\\\":28}\"', '127.0.0.1', '2026-04-14 19:53:13'),
+(39, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"HP-001\\\",\\\"tool_id\\\":28,\\\"status\\\":\\\"available\\\",\\\"notes\\\":\\\"ss\\\"}\"', '127.0.0.1', '2026-04-14 19:53:23'),
+(40, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Kulkas', '\"{\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"Kulkas\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"50\\\",\\\"min_credit_score\\\":\\\"5\\\",\\\"code_slug\\\":\\\"KLS\\\",\\\"description\\\":\\\"ff\\\",\\\"photo_path\\\":\\\"tools\\\\\\/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png\\\",\\\"id\\\":29}\"', '127.0.0.1', '2026-04-14 19:54:51'),
+(41, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Kulkas 3 Pintu', '\"{\\\"name\\\":\\\"Kulkas 3 Pintu\\\",\\\"category_id\\\":\\\"9\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"code_slug\\\":\\\"kulkas-3-pintu\\\",\\\"photo_path\\\":\\\"tools\\\\\\/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png\\\",\\\"price\\\":\\\"40\\\",\\\"description\\\":\\\"ff jg\\\",\\\"id\\\":30}\"', '127.0.0.1', '2026-04-14 19:54:51'),
+(42, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"KLS-001\\\",\\\"tool_id\\\":29,\\\"status\\\":\\\"available\\\",\\\"notes\\\":\\\"hh\\\"}\"', '127.0.0.1', '2026-04-14 19:55:07'),
+(43, 7, 'user.DiUpdate', 'user', 'DiUpdate user: 6', '\"{\\\"id\\\":6,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"Peminjam\\\",\\\"credit_score\\\":90,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-15T03:49:58.000000Z\\\"}\"', '127.0.0.1', '2026-04-14 20:49:58'),
+(44, 7, 'user.DiUpdate', 'user', 'DiUpdate user: 6', '\"{\\\"id\\\":6,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"Peminjam\\\",\\\"credit_score\\\":40,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-15T04:54:08.000000Z\\\"}\"', '127.0.0.1', '2026-04-14 21:54:08'),
+(45, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Kulkas', '\"{\\\"id\\\":29,\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"Kulkas\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"50\\\",\\\"min_credit_score\\\":\\\"50\\\",\\\"description\\\":\\\"ff\\\",\\\"code_slug\\\":\\\"KLS\\\",\\\"photo_path\\\":\\\"tools\\\\\\/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-14 22:02:38'),
+(46, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Handphone', '\"{\\\"id\\\":28,\\\"category_id\\\":\\\"7\\\",\\\"name\\\":\\\"Handphone\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"100\\\",\\\"min_credit_score\\\":\\\"50\\\",\\\"description\\\":\\\"GG\\\",\\\"code_slug\\\":\\\"Hp\\\",\\\"photo_path\\\":\\\"tools\\\\\\/mfTLCyKP0naHYf8c95nb7yKq5V73Zj28cG2Fql9U.webp\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-14 22:30:21'),
+(47, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Kulkas 3 Pintu', '\"{\\\"id\\\":30,\\\"category_id\\\":9,\\\"name\\\":\\\"Kulkas 3 Pintu\\\",\\\"item_type\\\":\\\"bundle_tool\\\",\\\"price\\\":\\\"50\\\",\\\"min_credit_score\\\":null,\\\"description\\\":\\\"ff jg\\\",\\\"code_slug\\\":\\\"kulkas-3-pintu\\\",\\\"photo_path\\\":\\\"tools\\\\\\/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-14 22:32:21'),
+(48, 4, 'tool.DiUpdate', 'tool', 'DiUpdate tool: Kulkas', '\"{\\\"id\\\":29,\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"Kulkas\\\",\\\"item_type\\\":\\\"bundle\\\",\\\"price\\\":\\\"49\\\",\\\"min_credit_score\\\":\\\"50\\\",\\\"description\\\":\\\"ff\\\",\\\"code_slug\\\":\\\"KLS\\\",\\\"photo_path\\\":\\\"tools\\\\\\/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png\\\",\\\"created_at\\\":null,\\\"updated_at\\\":null}\"', '127.0.0.1', '2026-04-14 23:07:42'),
+(49, 4, 'tool.DiBuat', 'tool', 'DiBuat tool: Laptop', '\"{\\\"category_id\\\":\\\"9\\\",\\\"name\\\":\\\"Laptop\\\",\\\"item_type\\\":\\\"single\\\",\\\"price\\\":\\\"40.000\\\",\\\"min_credit_score\\\":\\\"5\\\",\\\"code_slug\\\":\\\"LTP\\\",\\\"description\\\":\\\"ss\\\",\\\"photo_path\\\":\\\"tools\\\\\\/5N0D8hLq6WQSIPUDlFlzj5P2Yg6EUiXq8WEz2hRI.png\\\",\\\"id\\\":31}\"', '127.0.0.1', '2026-04-14 23:08:58'),
+(50, 4, 'toolunit.DiBuat', 'toolunit', 'DiBuat toolunit: ', '\"{\\\"code\\\":\\\"LTP-001\\\",\\\"tool_id\\\":31,\\\"status\\\":\\\"available\\\",\\\"notes\\\":null}\"', '127.0.0.1', '2026-04-14 23:09:36'),
+(51, 7, 'user.DiUpdate', 'user', 'DiUpdate user: 6', '\"{\\\"id\\\":6,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"Peminjam\\\",\\\"credit_score\\\":0,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-15T06:10:43.000000Z\\\"}\"', '127.0.0.1', '2026-04-14 23:10:43'),
+(52, 4, 'user.DiUpdate', 'user', 'DiUpdate user: 6', '\"{\\\"id\\\":6,\\\"email\\\":\\\"peminjam@ukk2026.com\\\",\\\"role\\\":\\\"Peminjam\\\",\\\"credit_score\\\":100,\\\"is_restricted\\\":0,\\\"created_at\\\":\\\"2026-04-14T00:56:17.000000Z\\\",\\\"updated_at\\\":\\\"2026-04-15T07:42:34.000000Z\\\"}\"', '127.0.0.1', '2026-04-15 00:42:34');
 
 -- --------------------------------------------------------
 
@@ -96,6 +111,13 @@ CREATE TABLE `appeals` (
   `reviewed_at` timestamp NULL DEFAULT NULL COMMENT 'Waktu Admin memutuskan. NULL jika masih pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `appeals`
+--
+
+INSERT INTO `appeals` (`id`, `user_id`, `reviewed_by`, `reason`, `status`, `credit_changed`, `admin_notes`, `created_at`, `reviewed_at`) VALUES
+(2, 6, 4, 'ssss', 'approved', 100, 'Banding diterima', '2026-04-15 00:40:40', '2026-04-15 00:42:34');
+
 -- --------------------------------------------------------
 
 --
@@ -104,7 +126,7 @@ CREATE TABLE `appeals` (
 
 CREATE TABLE `app_configs` (
   `id` int NOT NULL,
-  `name` int NOT NULL COMMENT 'Kunci konfigurasi. Contoh: app_name  ,   points_per_day_late  ,   points_damaged  ,   points_lost  ,   default_appeal_deduction  ,   max_loan_days',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `late_point` int NOT NULL COMMENT 'poin penalty yang bertambah jika pengembalian alat terlambat',
   `broken_point` int NOT NULL COMMENT 'poin penalty yang bertambah jika alat rusak',
   `lost_point` int NOT NULL COMMENT 'poin penalty yang bertambah jika alat hilang',
@@ -113,6 +135,13 @@ CREATE TABLE `app_configs` (
   `lost_fine` int NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL COMMENT 'Terakhir diubah oleh Admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `app_configs`
+--
+
+INSERT INTO `app_configs` (`id`, `name`, `late_point`, `broken_point`, `lost_point`, `late_fine`, `broken_fine`, `lost_fine`, `updated_at`) VALUES
+(1, 'Peminjaman Alats', 10, 50, 100, 10, 50, 100, '2026-04-15 00:29:47');
 
 -- --------------------------------------------------------
 
@@ -134,7 +163,7 @@ CREATE TABLE `bundle_tools` (
 --
 
 INSERT INTO `bundle_tools` (`id`, `bundle_id`, `tool_id`, `qty`, `created_at`, `updated_at`) VALUES
-(7, 24, 26, 1, NULL, NULL);
+(9, 29, 30, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -182,11 +211,11 @@ CREATE TABLE `loans` (
 --
 
 INSERT INTO `loans` (`id`, `user_id`, `tool_id`, `unit_code`, `employee_id`, `status`, `loan_date`, `due_date`, `purpose`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 6, 19, 'YO-001', 7, 'closed', '2026-04-14', '2026-04-24', 'ddd', NULL, '2026-04-13 18:43:44', '2026-04-13 20:58:27'),
-(2, 6, 24, 'YONO-001', 7, 'closed', '2026-06-20', '2026-06-21', 'injem', 'Menunggu konfirmasi pengembalian', '2026-04-13 18:45:49', '2026-04-13 20:58:21'),
-(3, 6, 19, 'YO-001', 7, 'rejected', '2026-04-14', '2026-04-30', 'pengen', 'malas', '2026-04-13 21:00:39', '2026-04-13 21:01:05'),
-(4, 8, 20, 'YO-001', 7, 'closed', '2026-04-14', '2026-04-30', 'ssss', NULL, '2026-04-13 21:27:04', '2026-04-13 21:51:29'),
-(5, 6, 20, 'YONO-001', 7, 'closed', '2026-04-14', '2026-04-14', 'ee', NULL, '2026-04-13 21:30:19', '2026-04-13 21:51:32');
+(14, 6, 28, 'HP-001', 7, 'closed', '2026-04-15', '2026-04-16', 'ss', NULL, '2026-04-14 20:49:30', '2026-04-14 20:49:58'),
+(15, 6, 28, 'HP-001', 7, 'closed', '2026-04-15', '2026-04-16', 'ss', NULL, '2026-04-14 21:53:35', '2026-04-14 21:54:08'),
+(16, 6, 28, 'KLS-001', 7, 'rejected', '2026-04-15', '2026-04-16', 'ss', 'ssss', '2026-04-14 22:06:30', '2026-04-14 22:09:52'),
+(17, 6, 28, 'KLS-001', 7, 'rejected', '2026-04-15', '2026-04-16', 'ss', 's', '2026-04-14 22:10:12', '2026-04-14 22:28:15'),
+(18, 6, 31, 'LTP-001', 7, 'closed', '2026-04-15', '2026-04-16', 'ss', NULL, '2026-04-14 23:09:54', '2026-04-14 23:10:43');
 
 -- --------------------------------------------------------
 
@@ -242,10 +271,9 @@ CREATE TABLE `returns` (
 --
 
 INSERT INTO `returns` (`id`, `loan_id`, `employee_id`, `condition_id`, `return_date`, `proof`, `notes`, `created_at`) VALUES
-(1, 1, 7, NULL, '2026-04-14', 'returns/2oIrxiwQ0xb3tO0C8lxL8808ovoABQRb9x44JmfJ.png', 'Dikonfirmasi petugas', NULL),
-(2, 2, 7, NULL, '2026-04-14', 'returns/UpKqdZhlFbIFnAHu7eRxyhGdj3dZgVgBQ6EKmnoV.webp', 'Dikonfirmasi petugas', NULL),
-(3, 4, 7, NULL, '2026-04-14', 'returns/UflW2dnACA4XYPymSHg5sIOGQYBg4D53Z9kfv2i6.png', 'Dikonfirmasi petugas', NULL),
-(4, 5, 7, NULL, '2026-04-14', 'returns/cQ5mTYdExpI21RBuwVibFlYcQsS2dyu2UMNZBkUE.png', 'Dikonfirmasi petugas', NULL);
+(13, 14, 7, '69df0ae601ef3', '2026-04-15', 'returns/gg34tefDSwK68mt0sSK8wD5IvvX0UavmlyAMu8iy.webp', 'Dikonfirmasi petugas', NULL),
+(14, 15, 7, '69df19f07b76a', '2026-04-15', 'returns/aB288J4LvtdfMu4M7zhNfLGRLK65fETp3IwKkLTy.png', 'Dikonfirmasi petugas', NULL),
+(15, 18, 7, '69df2be2d084c', '2026-04-15', 'returns/YUWND21cXeFih1zxGysALChT8E76pUT1jGGqfaZb.png', 'Dikonfirmasi petugas', NULL);
 
 -- --------------------------------------------------------
 
@@ -260,6 +288,13 @@ CREATE TABLE `settlements` (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Penjelasan pelunasan: bayar denda / ganti alat / kesepakatan lain',
   `settled_at` timestamp NOT NULL COMMENT 'Waktu pelunasan dicatat. Setelah ini violations.status = settled dan users.is_restricted = 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settlements`
+--
+
+INSERT INTO `settlements` (`id`, `violation_id`, `employee_id`, `description`, `settled_at`) VALUES
+(1, 4, 7, 'sss', '2026-04-15 00:08:53');
 
 -- --------------------------------------------------------
 
@@ -286,11 +321,10 @@ CREATE TABLE `tools` (
 --
 
 INSERT INTO `tools` (`id`, `category_id`, `name`, `item_type`, `price`, `min_credit_score`, `description`, `code_slug`, `photo_path`, `created_at`, `updated_at`) VALUES
-(18, 7, 'Handphone', 'bundle_tool', NULL, NULL, NULL, 'handphone', 'tools/KLYFtoZwvZImEVJApY8NbaNQwcWsJGi8Ej4dhUmg.webp', NULL, NULL),
-(19, 7, 'Laudzai Muaddab Budiss', 'single', 11, 1, NULL, 'yo', 'tools/VREpDNzcLSQ4OP2qRjbSjM2dps7j9D5fpNHmdpcQ.png', NULL, NULL),
-(20, 7, 'Muhammad Farhans', 'bundle', 111, 2, NULL, 'yono', 'tools/6dQk5suvbg4d1k383ZWX2EDiwPrFLGasy0ZsLiI8.png', NULL, NULL),
-(24, 7, 'Muhammad Farhanss', 'bundle', 200, 1, NULL, 'dd', 'tools/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp', NULL, NULL),
-(26, 7, 'ssss', 'bundle_tool', 11, NULL, 'ddd', 'ssss', 'tools/jgF9fLTw6jHvkhMDeF5Xya4wC5A0DYwldwuDKJwJ.webp', NULL, NULL);
+(28, 7, 'Handphone', 'single', 100, 50, 'GG', 'Hp', 'tools/mfTLCyKP0naHYf8c95nb7yKq5V73Zj28cG2Fql9U.webp', NULL, NULL),
+(29, 9, 'Kulkas', 'bundle', 49, 50, 'ff', 'KLS', 'tools/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png', NULL, NULL),
+(30, 9, 'Kulkas 3 Pintu', 'bundle_tool', 50, NULL, 'ff jg', 'kulkas-3-pintu', 'tools/tOopAIEr7n3OVQT1kmJ85f9q57U3zGznCt9gGQJU.png', NULL, NULL),
+(31, 9, 'Laptop', 'single', 40, 5, 'ss', 'LTP', 'tools/5N0D8hLq6WQSIPUDlFlzj5P2Yg6EUiXq8WEz2hRI.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -311,8 +345,9 @@ CREATE TABLE `tool_units` (
 --
 
 INSERT INTO `tool_units` (`code`, `tool_id`, `status`, `notes`, `created_at`) VALUES
-('YO-001', 19, 'available', NULL, '2026-04-13 06:13:40'),
-('YONO-001', 20, 'available', NULL, '2026-04-13 06:18:40');
+('HP-001', 28, 'available', 'ss', '2026-04-15 02:53:23'),
+('KLS-001', 29, 'available', 'hh', '2026-04-15 02:55:07'),
+('LTP-001', 31, 'available', NULL, '2026-04-15 06:09:36');
 
 -- --------------------------------------------------------
 
@@ -334,9 +369,10 @@ CREATE TABLE `unit_conditions` (
 --
 
 INSERT INTO `unit_conditions` (`id`, `unit_code`, `return_id`, `conditions`, `notes`, `recorded_at`) VALUES
-('69ddbb28c9ab2', 'YONO-001', 2, 'good', 'Dari peminjam', '2026-04-13 20:57:28'),
-('69ddc250bc4b0', 'YO-001', 3, 'broken', 'Dari peminjam', '2026-04-13 21:28:00'),
-('69ddc30a3c4d9', 'YONO-001', 4, 'broken', 'Dari peminjam', '2026-04-13 21:31:06');
+('69deff33729f0', 'HP-001', 12, 'broken', 'Dari petugas', '2026-04-14 20:00:03'),
+('69df0ae601ef3', 'HP-001', 13, 'broken', 'Dari petugas', '2026-04-14 20:49:58'),
+('69df19f07b76a', 'HP-001', 14, 'broken', 'Dari petugas', '2026-04-14 21:54:08'),
+('69df2be2d084c', 'LTP-001', 15, 'broken', 'Dari petugas', '2026-04-14 23:10:42');
 
 -- --------------------------------------------------------
 
@@ -361,7 +397,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `credit_score`, `is_restricted`, `created_at`, `updated_at`) VALUES
 (4, 'admin@ukk2026.com', '$2y$12$9bERSRUiOE2s5P4fTBW46.jw7csYC/YTcFwd9pZtPIDTTtNBKnJge', 'Admin', 100, 0, '2026-04-07 23:54:55', '2026-04-07 23:54:55'),
-(6, 'peminjam@ukk2026.com', '$2y$12$b57o5hvDlXvxUp/0VAV2guXZg8DgekZ/FwXhDZ.uyghuhm.y3DFIu', 'Peminjam', 100, 0, '2026-04-13 17:56:17', '2026-04-13 17:56:17'),
+(6, 'peminjam@ukk2026.com', '$2y$12$b57o5hvDlXvxUp/0VAV2guXZg8DgekZ/FwXhDZ.uyghuhm.y3DFIu', 'Peminjam', 100, 0, '2026-04-13 17:56:17', '2026-04-15 00:42:34'),
 (7, 'petugas@ukk2026.com', '$2y$12$Bkucpnf8I0VvUoiWmg1YjeP92f4AyjQiKDshKi4rZjV/dYoKY5kL2', 'Petugas', 100, 0, '2026-04-13 19:26:23', '2026-04-13 19:27:02'),
 (8, 'aan@gmail.comm', '$2y$12$P8.J5JZh02rLfmRBplmUPez4BJdIK.j3DU8UOEL3Nbzv36SBWN1Ra', 'Peminjam', 100, 0, '2026-04-13 21:25:46', '2026-04-13 21:25:46');
 
@@ -410,6 +446,15 @@ CREATE TABLE `violations` (
   `status` enum('active','settled') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `violations`
+--
+
+INSERT INTO `violations` (`id`, `loan_id`, `user_id`, `return_id`, `type`, `total_score`, `fine`, `description`, `status`, `created_at`) VALUES
+(2, 14, 6, 13, 'late', 10, 10, 'Pelanggaran saat pengembalian', 'active', '2026-04-14 20:49:58'),
+(3, 15, 6, 14, 'damaged', 50, 50, 'Pelanggaran saat pengembalian', 'active', '2026-04-14 21:54:08'),
+(4, 18, 6, 15, 'damaged', 50, 20, 'Pelanggaran saat pengembalian', 'settled', '2026-04-14 23:10:42');
 
 --
 -- Indexes for dumped tables
@@ -534,25 +579,25 @@ ALTER TABLE `violations`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `appeals`
 --
 ALTER TABLE `appeals`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `app_configs`
 --
 ALTER TABLE `app_configs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bundle_tools`
 --
 ALTER TABLE `bundle_tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -564,7 +609,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -576,19 +621,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `returns`
 --
 ALTER TABLE `returns`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `settlements`
 --
 ALTER TABLE `settlements`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tools`
 --
 ALTER TABLE `tools`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -600,7 +645,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `violations`
 --
 ALTER TABLE `violations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
