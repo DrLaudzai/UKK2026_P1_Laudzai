@@ -77,7 +77,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 class="feather icon-menu font-large-1"></i></a></li>
                     <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo"
                                 alt="stack admin logo" src="../../../app-assets/images/logo/stack-logo-light.png">
-                            <h2 class="brand-text">Stack</h2>
+                            <h2 class="brand-text" style="font-size: 16px;">
+                                {{ $appConfig->name ?? 'Stack' }}
+                            </h2>
                         </a></li>
                     <li class="nav-item d-lg-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                             data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
@@ -169,6 +171,20 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="menu-title">Log Aktivitas</span>
                         </a>
                     </li>
+
+                    <li class="{{ request()->routeIs('appeals.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.appeals.index') }}">
+                            <i class="fa fa-gavel"></i>
+                            <span class="menu-title">Pengajuan Banding</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('config.*') ? 'active' : '' }}">
+                        <a href="{{ route('config.index') }}">
+                            <i class="fa fa-cog"></i>
+                            <span class="menu-title">Konfigurasi</span>
+                        </a>
+                    </li>
                 @endif
 
 
@@ -195,6 +211,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
 
+                    <li class="{{ request()->routeIs('peminjam.appeals.*') ? 'active' : '' }}">
+                        <a href="{{ route('peminjam.appeals.index') }}">
+                            <i class="fa fa-gavel"></i>
+                            <span class="menu-title">Pengajuan Banding</span>
+                        </a>
+                    </li>
+
                     <li class="{{ request()->routeIs('peminjam.history.*') ? 'active' : '' }}">
                         <a href="{{ route('peminjam.history.index') }}">
                             <i class="fa fa-history"></i>
@@ -208,6 +231,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="{{ route('petugas.peminjaman.index') }}">
                             <i class="fa fa-list"></i>
                             <span>Peminjaman</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('settlements.*') ? 'active' : '' }}">
+                        <a href="{{ route('settlements.index') }}">
+                            <i class="fa fa-money-bill"></i>
+                            <span>Settlement</span>
                         </a>
                     </li>
 

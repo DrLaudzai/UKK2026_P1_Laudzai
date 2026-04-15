@@ -48,8 +48,22 @@ class LoanController extends Controller
             'purpose' => 'required'
         ]);
 
+        $tool = Tool::findOrFail($request->tool_id);
+        $user = auth()->user();
+
+
+        if ($tool->min_credit_score && $user->credit_score < $tool->min_credit_score) {
+            return back()->with('error', 'Credit score kamu tidak mencukupi untuk meminjam alat ini');
+        }
+
+
+        if ($user->is_restricted) {
+            return back()->with('error', 'Akun kamu sedang dibatasi (belum menyelesaikan pelanggaran)');
+        }
+
+        // ================= CREATE LOAN =================
         Loan::create([
-            'user_id' => auth()->id(),
+            'user_id' => $user->id,
             'tool_id' => $request->tool_id,
             'unit_code' => $request->unit_code,
             'status' => 'pending',
@@ -69,7 +83,7 @@ class LoanController extends Controller
             ->where('user_id', auth()->id())
             ->where(function ($q) {
                 $q->whereIn('status', ['rejected', 'closed'])
-                  ->orWhereHas('return'); // 🔥 masukin yg sudah return
+                    ->orWhereHas('return'); // 🔥 masukin yg sudah return
             })
             ->latest()
             ->get();

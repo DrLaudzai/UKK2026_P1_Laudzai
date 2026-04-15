@@ -37,15 +37,38 @@
 
                                         <div class="modal-body">
 
-                                            <label>Kondisi Barang</label>
-                                            <select name="condition" class="form-control" required>
-                                                <option value="">Pilih kondisi</option>
-                                                <option value="good">Good</option>
-                                                <option value="broken">Broken</option>
-                                                <option value="maintenance">Maintenance</option>
+                                            {{-- KONDISI UTAMA --}}
+                                            <label>Kondisi Pengembalian</label>
+                                            <select name="return_condition" id="returnCondition{{ $loan->id }}"
+                                                class="form-control" onchange="toggleViolation({{ $loan->id }})"
+                                                required>
+                                                <option value="">Pilih</option>
+                                                <option value="safe">Aman</option>
+                                                <option value="problem">Bermasalah</option>
                                             </select>
 
-                                            <label class="mt-2">Catatan (opsional)</label>
+                                            {{-- FIELD TAMBAHAN (VIOLATION) --}}
+                                            <div id="violationField{{ $loan->id }}" style="display:none;">
+
+                                                <hr>
+
+                                                <label>Tipe Pelanggaran</label>
+                                                <select name="violation_type" class="form-control">
+                                                    <option value="late">Terlambat</option>
+                                                    <option value="damaged">Rusak</option>
+                                                    <option value="lost">Hilang</option>
+                                                </select>
+
+                                                <label class="mt-2">Deskripsi</label>
+                                                <textarea name="violation_description" class="form-control"></textarea>
+
+                                                <small class="text-danger">
+                                                    ⚠️ Denda & pengurangan poin otomatis dari sistem
+                                                </small>
+
+                                            </div>
+
+                                            <label class="mt-2">Catatan</label>
                                             <textarea name="notes" class="form-control"></textarea>
 
                                         </div>
@@ -153,11 +176,11 @@
 
                                 {{-- RETURN --}}
                                 @if ($loan->status == 'active' && $loan->return && !$loan->return->employee_id)
-                                        @csrf
-                                        <button class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target="#returnModal{{ $loan->id }}">
-                                            Konfirmasi Return
-                                        </button>
+                                    @csrf
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal"
+                                        data-target="#returnModal{{ $loan->id }}">
+                                        Konfirmasi Return
+                                    </button>
                                 @endif
 
                             </td>
@@ -172,3 +195,16 @@
     </div>
 
 @endsection
+
+<script>
+function toggleViolation(id) {
+    let val = document.getElementById('returnCondition' + id).value;
+    let field = document.getElementById('violationField' + id);
+
+    if (val === 'problem') {
+        field.style.display = 'block';
+    } else {
+        field.style.display = 'none';
+    }
+}
+</script>

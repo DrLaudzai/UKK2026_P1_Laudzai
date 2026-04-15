@@ -173,6 +173,10 @@ function addBundleItem() {
         </div>
 
         <div class="col-md-2">
+            <input type="number" name="bundle_min_credit_score[]" class="form-control" placeholder="Min Credit Score">
+        </div>
+
+        <div class="col-md-2">
             <input type="number" name="bundle_price[]" class="form-control" placeholder="Price">
         </div>
 

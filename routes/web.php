@@ -11,6 +11,12 @@ use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\PetugasLoanController;
+use App\Http\Controllers\ViolationController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\SettlementController;
+use App\Http\Controllers\PeminjamAppealController;
+use App\Http\Controllers\AdminAppealController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -122,3 +128,35 @@ Route::middleware(['auth'])
 
 
     });
+
+Route::post('/violation/{loan}', [ViolationController::class, 'store'])
+    ->name('petugas.violation.store');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/admin/config', [ConfigController::class, 'index'])
+        ->name('config.index');
+
+    Route::post('/admin/config', [ConfigController::class, 'update'])
+        ->name('config.update');
+
+    Route::get('/petugas/settlements', [SettlementController::class, 'index'])
+        ->name('settlements.index');
+
+    Route::post('/petugas/settlements/{id}', [SettlementController::class, 'store'])
+        ->name('settlements.store');
+
+    // PEMINJAM
+    Route::prefix('peminjam')->middleware(['auth'])->group(function () {
+        Route::get('appeals', [PeminjamAppealController::class, 'index'])->name('peminjam.appeals.index');
+        Route::post('appeals', [PeminjamAppealController::class, 'store'])->name('peminjam.appeals.store');
+    });
+
+    // ADMIN
+    Route::prefix('admin')->middleware(['auth'])->group(function () {
+        Route::get('appeals', [AdminAppealController::class, 'index'])->name('admin.appeals.index');
+        Route::post('appeals/{id}/approve', [AdminAppealController::class, 'approve'])->name('admin.appeals.approve');
+        Route::post('appeals/{id}/reject', [AdminAppealController::class, 'reject'])->name('admin.appeals.reject');
+    });
+
+});
