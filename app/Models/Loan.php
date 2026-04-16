@@ -20,20 +20,20 @@ class Loan extends Model
         'notes',
     ];
 
-    // 🔥 RELASI TOOL
+    // RELASI TOOL
     public function tool()
     {
         return $this->belongsTo(Tool::class, 'tool_id');
     }
 
-    // 🔥 RELASI USER (PEMINJAM)
+    // RELASI USER (PEMINJAM)
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
 
-    // 🔥 RELASI RETURN
+    // RELASI RETURN
     public function return()
     {
         return $this->hasOne(\App\Models\ReturnModel::class, 'loan_id');

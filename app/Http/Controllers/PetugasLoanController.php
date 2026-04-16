@@ -15,7 +15,7 @@ class PetugasLoanController extends Controller
     public function index()
     {
         $loans = Loan::with(['tool', 'user.detail', 'return'])
-            ->whereIn('status', ['pending', 'active']) // ❗ cukup ini
+            ->whereIn('status', ['pending', 'active']) 
             ->latest()
             ->get();
 
@@ -123,7 +123,7 @@ class PetugasLoanController extends Controller
 
             } elseif ($type == 'lost') {
                 $score = $config->lost_point;
-                $fine = $price; // 🔥 full ganti rugi
+                $fine = $price; 
             }
 
             $fine = round($fine);

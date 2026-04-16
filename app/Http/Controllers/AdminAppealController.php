@@ -19,7 +19,7 @@ class AdminAppealController extends Controller
     public function approve(Request $request, $id)
     {
         $request->validate([
-            'credit_changed' => 'required|numeric|min:0'
+            'credit_changed' => 'required|numeric|min:1|max:100'
         ]);
 
         $appeal = Appeal::with('user')->findOrFail($id);
@@ -34,17 +34,15 @@ class AdminAppealController extends Controller
 
         $user = $appeal->user;
 
-        // 🔥 ambil dari input admin
+
         $credit = $request->credit_changed;
 
-        // tambah credit
-        $user->credit_score += $credit;
+        $user->credit_score = min(100, $user->credit_score + $credit);
         $user->save();
 
-        // update appeal
         $appeal->update([
             'status' => 'approved',
-            'credit_changed' => $credit, // simpan juga
+            'credit_changed' => $credit,
             'reviewed_by' => auth()->id(),
             'reviewed_at' => now(),
             'admin_notes' => 'Banding diterima'

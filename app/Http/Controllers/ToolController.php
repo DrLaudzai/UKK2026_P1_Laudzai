@@ -111,7 +111,6 @@ class ToolController extends Controller
         try {
             $tool = Tool::findOrFail($id);
 
-            // 🔥 ambil item_type (karena select disabled)
             $itemType = $request->item_type ?? $tool->item_type;
 
             $data = $request->all();
@@ -137,7 +136,7 @@ class ToolController extends Controller
                         $subId = $request->bundle_id[$index] ?? null;
 
                         if ($subId) {
-                            // ✅ UPDATE EXISTING
+
                             $subTool = Tool::find($subId);
 
                             if ($subTool) {
@@ -159,7 +158,7 @@ class ToolController extends Controller
                             }
 
                         } else {
-                            // ✅ INSERT BARU
+                            
                             $subTool = Tool::create([
                                 'name' => $name,
                                 'category_id' => $tool->category_id,
@@ -181,7 +180,7 @@ class ToolController extends Controller
                     }
                 }
 
-                // ✅ HAPUS YANG DIHAPUS USER
+                
                 $oldIds = DB::table('bundle_tools')
                     ->where('bundle_id', $tool->id)
                     ->pluck('tool_id')

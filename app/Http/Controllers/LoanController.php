@@ -16,7 +16,7 @@ class LoanController extends Controller
         $loans = Loan::with('tool')
             ->where('user_id', auth()->id())
             ->whereIn('status', ['pending', 'active'])
-            ->whereDoesntHave('return') // ⛔ buang yang sudah return
+            ->whereDoesntHave('return') 
             ->latest()
             ->get();
 
@@ -83,7 +83,7 @@ class LoanController extends Controller
             ->where('user_id', auth()->id())
             ->where(function ($q) {
                 $q->whereIn('status', ['rejected', 'closed'])
-                    ->orWhereHas('return'); // 🔥 masukin yg sudah return
+                    ->orWhereHas('return');
             })
             ->latest()
             ->get();
@@ -97,7 +97,7 @@ class LoanController extends Controller
         $loans = Loan::with(['tool', 'return'])
             ->where('user_id', auth()->id())
             ->where('status', 'active')
-            ->whereDoesntHave('return') // ⛔ jangan tampil yg sudah diajukan
+            ->whereDoesntHave('return') 
             ->get();
 
         return view('peminjam.pengembalian.index', compact('loans'));

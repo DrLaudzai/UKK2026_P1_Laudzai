@@ -56,7 +56,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        // cek apakah masih dipakai di tools
         if ($category->tools()->exists()) {
             return back()->with('error', 'Kategori tidak bisa dihapus karena masih digunakan oleh tools!');
         }

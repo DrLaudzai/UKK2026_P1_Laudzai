@@ -16,6 +16,7 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\PeminjamAppealController;
 use App\Http\Controllers\AdminAppealController;
+use App\Http\Controllers\ReportController;
 
 
 /*
@@ -79,19 +80,19 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('peminjam')->name('peminjam.')->group(function () {
 
-    // 🔹 DAFTAR ALAT (VIEW ONLY)
+    //  DAFTAR ALAT (VIEW ONLY)
     Route::get('/tools', [ToolController::class, 'index'])->name('tools.index');
 
-    // 🔹 PEMINJAMAN
+    //  PEMINJAMAN
     Route::get('/peminjaman', [LoanController::class, 'index'])->name('peminjaman.index');
 
     Route::get('/peminjaman/create', [LoanController::class, 'create'])->name('peminjaman.create');
     Route::post('/peminjaman', [LoanController::class, 'store'])->name('peminjaman.store');
 
-    // 🔹 RIWAYAT
+    //  RIWAYAT
     Route::get('/riwayat', [LoanController::class, 'history'])->name('history.index');
 
-    // 🔹 PENGEMBALIAN
+    //  PENGEMBALIAN
     Route::get('/pengembalian', [LoanController::class, 'pengembalian'])->name('pengembalian.index');
 
     Route::post('/pengembalian/{id}', [LoanController::class, 'requestReturn'])
@@ -110,7 +111,6 @@ Route::middleware(['auth'])
     ->name('petugas.')
     ->group(function () {
 
-
         Route::get('/peminjaman', [PetugasLoanController::class, 'index'])
             ->name('peminjaman.index');
 
@@ -126,8 +126,13 @@ Route::middleware(['auth'])
         Route::get('/peminjaman/history', [PetugasLoanController::class, 'history'])
             ->name('peminjaman.history');
 
+        Route::get('/reports', [ReportController::class, 'index'])
+            ->name('reports.index');
 
+        Route::post('/reports/print', [ReportController::class, 'print'])
+            ->name('reports.print');
     });
+
 
 Route::post('/violation/{loan}', [ViolationController::class, 'store'])
     ->name('petugas.violation.store');

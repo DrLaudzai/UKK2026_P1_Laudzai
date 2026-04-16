@@ -25,7 +25,7 @@ class SettlementController extends Controller
 
         $violation = Violation::findOrFail($id);
 
-        // ❗ cegah double settlement
+
         if ($violation->status == 'settled') {
             return back()->with('error', 'Pelanggaran sudah diselesaikan');
         }

@@ -55,7 +55,6 @@
                             </tr>
                         </table>
 
-                        {{-- 🔥 KHUSUS BUNDLE --}}
                         @if ($tool->item_type === 'bundle')
                                         <tr id="bundle-{{ $tool->id }}" style="display: none;">
                                             <td colspan="7">

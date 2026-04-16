@@ -51,7 +51,7 @@
                                         </option>
                                     </select>
 
-                                    <!-- 🔥 WAJIB -->
+
                                     <input type="hidden" name="item_type" value="{{ $tool->item_type }}">
                                 </div>
 
@@ -96,7 +96,7 @@
                                         @foreach ($bundleItems as $index => $item)
                                             <div class="row mb-2">
 
-                                                <!-- 🔥 PENTING BANGET -->
+
                                                 <input type="hidden" name="bundle_id[]" value="{{ $item->tool_id }}">
 
                                                 <div class="col-md-3">

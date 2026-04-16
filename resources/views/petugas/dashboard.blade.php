@@ -46,7 +46,7 @@
 
 <div class="card mt-2">
     <div class="card-body text-center">
-        <h4>Selamat Datang, Petugas 👨‍🔧</h4>
+        <h4>Selamat Datang, Petugas</h4>
         <p class="text-muted">
             Kelola peminjaman, approval, dan pengembalian alat di sini.
         </p>

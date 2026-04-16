@@ -63,7 +63,7 @@
                                                 <textarea name="violation_description" class="form-control"></textarea>
 
                                                 <small class="text-danger">
-                                                    ⚠️ Denda & pengurangan poin otomatis dari sistem
+                                                    * Pelanggaran akan otomatis dikenakan denda sesuai aturan yang berlaku.
                                                 </small>
 
                                             </div>
